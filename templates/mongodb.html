@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html  ng-app="myApp" ng-controller="customersCtrl">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<title>MongoDB</title>
+
+{% load static %}
+<link rel="stylesheet" href="{% static "css/mongodb.css" %}">
+
+</head>
+{% verbatim %}
+
+<body>
+<h3 {{valid_mileage()}}>
+Hello!
+</h3>
+
+<div>
+    <form>
+        <div class="form-group">
+          <div class="input-group">
+            <div  class="input-group-addon"><i class="fa fa-search"></i></div>Search in angular
+            <input id='in_box' type="text" class="form-control" placeholder="Search" ng-model="searchFish" ng-change="init_popups(); updateCSS()">
+          </div>
+        </div>
+          <div class="input-group">
+            <div  class="input-group-addon"><i class="fa fa-search"></i></div>Search in mongo
+            <input id='quick_search' type="text" class="form-control" placeholder="Search" ng-model="quick_search_key" ng-change="quick_search() ; updateCSS()">
+            <div>
+            s: {{collection_size}}
+            </div>
+          </div>
+        </div>
+    </form>
+
+    <div ng-show="showLoader">
+    <img src="https://loading.io/spinners/dual-ring/lg.dual-ring-loader.gif" height="60" width="60"> <!-- or any other spinner -->
+    </div>
+
+<div class="container-fluid" id="table_container">
+    <table style="width:100%" id='customers'>
+      <tr>
+        <th>Img</th>
+        <th>Title</th>
+        <th>
+            <a href="#" ng-click="sortType = 'price'; sortReverse = !sortReverse"> Price
+            <span ng-show="sortType == 'price' && !sortReverse" class="fa fa-caret-down"></span>
+            <span ng-show="sortType == 'price' && sortReverse" class="fa fa-caret-up"></span>
+          </a>
+        </th>
+        <th><span id="km"> Kilómetros</span></th>
+        <th>Contact</th>
+    	<th>Brand</th>
+        <!--<th>Atribs</th>-->
+        <th>Description</th>
+        <th>Modelo</th>
+        <th>API_JSON</th>
+        <th>Fav</th>
+      </tr>
+
+      <tr ng-repeat="x in items | orderBy:sortType:sortReverse | filter:searchFish">
+
+        	<td> <img src='{{ x.images[0] }}'></td>
+            <td>
+                 {{$index + 1}}
+                 <a  target="_blank"  href='{{ x.permalink }}' data-toggle="popover" data-trigger="hover"
+                 title="{{ x.title }}" data-img="{{x.thumbnail}}"> {{ x.title }} </a>
+            </td>
+
+            <td>  <span class="highligAble">{{ x.price  | validatePrice : x.currency_id : $index }}</span>          </td>
+
+            <td>  <span class="highligAble"> {{x.mileage | validateMileage: $index }}</span> {{x.year}}</td>
+
+        	<td> {{ x.location }}
+                <div class="gl_icon" ng-if="x.location.latitude">
+                     <a   target="_blank" href='https://www.google.com/maps/?q={{x.location.latitude}}, {{x.location.longitude}}'>
+                     <span class="glyphicon glyphicon-map-marker"></span>
+                    </a>
+                </div>
+            {{ x.phone | telephone }}
+           </td>
+
+        	<td>{{x.features.Marca}} {{x.features.Modelo}} {{x.features['Tipo de combustible'] }} {{ x.features.Color }} </td>
+            <!--<td>{{x.features | json}}</td>-->
+
+        	<td>{{x.description | limitTo: 80}}</td>
+
+            <td> {{ x.last_updated.$date | date  }}
+            <!--<td>-->
+            <!--    <a href="#" class="fa fa-facebook"></a>-->
+            <!--    <a href="#" class="fa fa-twitter"></a>-->
+            <!--    <a href="{{x.main_img}}"> img </a>-->
+            <!--</td>-->
+
+            <td>
+                <a href='https://api.mercadolibre.com/items/{{ x.id }}'>idAPI</a>
+            </td>
+
+            <td>
+                <div  class="gl_icon" ng-if="am_I_in_favorites(x.id)">
+                     <span class="glyphicon glyphicon-heart yellow_heart" ng-click="remove_from_favorites(x.id)"></span>
+                </div>
+
+                <div  class="gl_icon" ng-if="! am_I_in_favorites(x.id)">
+                     <span class="glyphicon glyphicon-heart-empty" ng-click="add_to_favorites(x.id)"></span>
+                </div>
+
+                <div class="gl_icon" ng-if="get_attributes(x.attributes).ENGINE_DISPLACEMENT">
+                     <span class="glyphicon glyphicon-wrench" alt="asdf" title="ENGINE_DISPLACEMENT"></span>
+                </div>
+
+                <div class="gl_icon" ng-if="get_attributes(x.attributes).VEHICLE_YEAR < 2000">
+                     <span class="glyphicon glyphicon-music" alt="asdf" title="before 2000 year" ></span>
+                </div>
+
+                <div class="gl_icon" ng-if="x.price > 5000">
+                     <span class="glyphicon glyphicon-road"  alt="is a car dealer?" title="More than 5000 km? "></span>
+                </div>
+
+                <div  class="gl_icon" ng-if="x.seller.car_dealer">
+                     <span class="glyphicon glyphicon-eye-open" alt="is a car dealer?" title="Is the owner a car dealer?"></span>
+                    </a>
+                </div>
+            </td>
+       </tr>
+
+  </table>
+
+</div>
+</div>
+{% endverbatim %}
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="{% static "js/mongodb.js" %}"></script>
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+
+#customers {
+    /*font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;*/
+    font-family: serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#customers td, #customers th {
+    border: 1px solid #ddd;
+    padding: 4px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+    padding-top: 7px;
+    padding-bottom: 7px;
+    text-align: left;
+    /*background-color: #4CAF50;*/
+    background-color: #333333;
+    /*color: white;*/
+    color: #ffffff;
+    font-size: 15px;
+    letter-spacing: 1px;
+}
+.gl_icon {
+    display: inline-table;
+}
+body{
+     /*font-size: smaller  */
+    /*background-image: url("https://www.wallpaperup.com/uploads/wallpapers/2014/05/01/347388/2fb835b48c4de491bca8053239620ba3-1400.jpg");*/
+    /*background-color: black;*/
+    background-color: #b9b2b2;
+    margin: 8px;
+    font-size: large;
+}
+
+/*html, body {margin: 0; height: 100%; overflow: hidden}*/
+/*header {margin: 0; height: 100%; overflow: hidden}*/
+
+/*header { scrolling : "no"}*/
+
+#noScroll{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    border-style: double;
+    border-color: crimson;
+    z-index: 1;
+    background: #333333;
+}
+
+#table_container{
+    margin-top: 280px;
+}
+
+
+.navbar.navbar-static {
+    background-color: #333333;
+}
+
+.yellow_heart {
+    color: orange;
+}
+#in_box { width: 400px; }

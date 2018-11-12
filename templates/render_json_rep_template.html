@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html ng-app="json_retrieve">
+
+<head>
+    <title>render_json_rep_template</title>
+</head>
+
+<body ng-controller="Controller">
+<p> JSON CALL </p>
+
+{% verbatim myblock %}
+
+     <ul>
+        <li>id: {{ data.id }}</li>
+        <li>site_id: {{data.site_id}}</li>
+        <li>title: {{data.title}}</li>
+        <li>price: {{data.price}} {{data.currency_id}}</li>
+        <li> location: {{data.address.state_name}} {{data.address.city_name}}</li>
+        <li> phone: {{data.address.area_code}} {{data.address.phone1}}  </li>
+        <li> <a href='{{data.permalink}}' > link </a>  </li>
+        <li> <img src='{{data.thumbnail}}'>  </li>
+
+
+
+
+        <li><pre> seller_contact: {{data.seller_contact | json }}</pre> </li>
+     </ul>
+<hr>
+<pre>   {{ pretty_json }} </pre>
+
+{% endverbatim myblock %}
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.js"></script>
+<script type="text/javascript">
+
+    console.log("START")
+    j_resp = '';
+    var app = angular.module('json_retrieve', []);
+
+    app.controller('Controller', function($scope,$http ) {
+        $scope.name = 'The world is mine';
+        $scope.data = "{id: '1111', name: 'Florida'},";
+        $scope.pretty_json = '';
+
+        $scope.submit = function () {
+            console.log(" inside SUBMIT: ");
+            $http.get("https://kambo.pythonanywhere.com/response_json_rep")
+                .then(function(response) {
+                    j_resp = JSON.parse(response.data);
+                    $scope.data = j_resp;
+                    $scope.pretty_json = JSON.stringify(j_resp, null, '\t');
+                    console.log(j_resp);
+
+                });
+        };
+
+        $scope.submit()
+
+    });
+
+</script>
+
+</body>
+</html>
+
+

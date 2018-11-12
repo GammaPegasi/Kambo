@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html ng-app="json_retrieve">
+
+<head>
+    <title>geolocalization_template</title>
+</head>
+
+<body ng-controller="Controller">
+<h3> geolocalization_template </h3>
+
+{% verbatim myblock %}
+
+   <ul>
+        <li><pre>latitude: {{ data  | json  }} </pre></li>
+    </ul>
+     <!--<ul>-->
+     <!--   <li>id: {{ data.id }}</li>-->
+     <!--   <li>site_id: {{data.site_id}}</li>-->
+     <!--   <li>title: {{data.title}}</li>-->
+     <!--   <li>price: {{data.price}} {{data.currency_id}}</li>-->
+     <!--   <li> location: {{data.address.state_name}} {{data.address.city_name}}</li>-->
+     <!--   <li> phone: {{data.address.area_code}} {{data.address.phone1}}  </li>-->
+     <!--   <li> <a href='{{data.permalink}}' > link </a>  </li>-->
+     <!--   <li> <img src='{{data.thumbnail}}'>  </li>-->
+     <!--   <li><pre> seller_contact: {{data.seller_contact | json }}</pre> </li>-->
+     <!--</ul>-->
+<hr>
+<pre>   {{ name }} </pre>
+<pre>   {{ data.lat }} {{ data.lng }} </pre>
+
+{% endverbatim myblock %}
+*** <div class="result"> </div> ***
+
+<script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.js"></script>
+<script type="text/javascript">
+
+    console.log("START")
+    j_resp = '';
+    var app = angular.module('json_retrieve', []);
+
+    app.controller('Controller', function($scope,$http ) {
+        $scope.name = 'The world is mine';
+        $scope.data = "{id: '1111', name: 'Florida'},";
+        $scope.pretty_json = '';
+
+        // $scope.submit = function () {
+        //     console.log(" inside SUBMIT: ");
+        //     $http.post("https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyBZWTL28kYtaliGL0STdSXGAu__F1h1n2k")
+        //         .then(function(response) {
+        //             // j_resp = JSON.parse(response.data);
+        //             j_resp = response.data;
+        //             $scope.data = j_resp;
+        //             $scope.pretty_json = JSON.stringify(j_resp, null, '\t');
+        //             console.log(j_resp);
+
+        //         });
+        // };
+
+        $scope.submit = function () {
+            console.log(" inside SUBMIT: ");
+
+        // $.ajax({
+        //       type: "POST",
+        //       url: "https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyBZWTL28kYtaliGL0STdSXGAu__F1h1n2k",
+        //       data: data,
+        //       success: success,
+        //       dataType: dataType
+        // });
+
+            // $.post( "https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyBZWTL28kYtaliGL0STdSXGAu__F1h1n2k", function( data ) {
+            // //   $( ".result" ).html( data );
+            // $scope.data = data;
+            // });
+
+
+
+        // var config = { headers : {'Content-Type': 'application/json; charset=utf-8'}};
+        //Stringify the JSON data
+        // var data = JSON.stringify({key:'AIzaSyBZWTL28kYtaliGL0STdSXGAu__F1h1n2k'});
+
+        $http.post(
+            'https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyBZWTL28kYtaliGL0STdSXGAu__F1h1n2k'
+            // data
+            // headers
+        ).then( function(response){
+         // success callback
+             console.log('respose: ', response);
+             $scope.data = response.data.location
+
+
+        }).catch( function(error) {
+             console.log('respose error');
+
+        });
+
+
+
+        };
+        $scope.submit()
+    });
+
+</script>
+
+</body>
+</html>
+
+

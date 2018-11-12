@@ -1,0 +1,174 @@
+<!--
+    Search using ONLY AngularJS funcionalities
+    It also includes a table filled by AngularJS with Popovers, Bootstrap Glyphicons,
+    allows you to add the rows to favorites
+    and has sort functionality on the Price field
+
+*** Include template and inheritance ***
+*** https://stackoverflow.com/questions/12142891/django-include-a-block-in-several-templates-template-tag-something-else/12143011
+-->
+        <!DOCTYPE html>
+
+<html ng-app="searchAngular">
+
+<head>
+{% include "src_template.html" %}
+<title>searchAngular-JS</title>
+</head>
+
+<body>
+<div ng-controller="MainCtrl">
+
+<div  id="noScroll" class="container">
+
+{% include "header_template.html" %}
+
+  <div class="alert alert-info">
+    <p>Sort Type: {{ sortType }}</p>
+    <p>Sort Reverse: {{ sortReverse }}</p>
+   <p>Search Query: {{ searchFish }}</p>
+  </div>
+
+
+  <form>
+    <div class="form-group">
+      <div class="input-group">
+        <div  class="input-group-addon"><i class="fa fa-search"></i></div>
+        <input id='in_box' type="text" class="form-control" placeholder="Search" ng-model="searchFish" ng-change="init_popups()">
+
+            <!-- ng-keypress       -->
+
+      </div>
+    </div>
+  </form>
+
+ </div>
+
+<div class="container-fluid" id="table_container">
+
+    <table style="width:100%" id='customers'>
+      <tr>
+        <th>[{{data.length}} items] title</th>
+        <th>F</th>
+        <th>cur</th>
+
+        <th>
+            <a href="#" ng-click="sortType = 'price'; sortReverse = !sortReverse">
+                    Price
+            <span ng-show="sortType == 'price' && !sortReverse" class="fa fa-caret-down"></span>
+            <span ng-show="sortType == 'price' && sortReverse" class="fa fa-caret-up"></span>
+          </a>
+
+        </th>
+
+        <th>Kilómetros</th>
+        <th>Año</th>
+        <th>Localidad</th>
+    	<th>Dpto</th>
+    	<th>phone</th>
+    	<th>Marca</th>
+        <th>Cilindrada</th>
+        <th>Modelo</th>
+        <th>stop_time</th>
+        <th>tnail</th>
+        <th>catId</th>
+        <th >social</th>
+        <th>prod_api</th>
+      </tr>
+
+{% verbatim %}
+
+      <tr ng-repeat="x in data | orderBy:sortType:sortReverse | filter:searchFish">
+            <td>
+             <a  target="_blank"  href='{{ x.permalink }}' data-toggle="popover" data-trigger="hover" title="{{get_attributes(x.attributes).BRAND}} {{get_attributes(x.attributes).MODEL}}" data-img="{{x.thumbnail}}">  {{ x.title }} </a>
+            </td>
+
+
+            <td>
+               <div  class="gl_icon" ng-if="am_I_in_favorites(x.id)">
+                     <span class="glyphicon glyphicon-heart yellow_heart" ng-click="remove_from_favorites(x.id)"></span>
+
+               </div>
+               <div  class="gl_icon" ng-if="! am_I_in_favorites(x.id)">
+                     <span class="glyphicon glyphicon-heart-empty" ng-click="add_to_favorites(x.id)"></span>
+               </div>
+
+                <div class="gl_icon" ng-if="get_attributes(x.attributes).ENGINE_DISPLACEMENT">
+                     <span class="glyphicon glyphicon-wrench" alt="asdf" title="ENGINE_DISPLACEMENT"></span>
+                </div>
+
+                <div class="gl_icon" ng-if="get_attributes(x.attributes).VEHICLE_YEAR < 2000">
+                     <span class="glyphicon glyphicon-music" alt="asdf" title="before 2000 year" ></span>
+                </div>
+
+                <div class="gl_icon" ng-if="x.price > 5000">
+                     <span class="glyphicon glyphicon-road"  alt="is a car dealer?" title="More than 5000 km? "></span>
+                </div>
+
+                <div  class="gl_icon" ng-if="x.seller.car_dealer">
+                     <span class="glyphicon glyphicon-eye-open" alt="is a car dealer?" title="Is the owner a car dealer?"></span>
+                    </a>
+                </div>
+
+            </td>
+
+            <td>{{ x.currency_id }} </td>
+
+            <td> {{ x.price }}
+
+              </td>
+
+
+            <td>{{get_attributes(x.attributes).KILOMETERS}}</td>
+
+            <td>{{get_attributes(x.attributes).VEHICLE_YEAR}}</td>
+
+        	<td> {{ x.address.city_name }}
+                <div class="gl_icon" ng-if="x.location.latitude">
+                     <a   target="_blank" href='https://www.google.com/maps/?q={{x.location.latitude}}, {{x.location.longitude}}'>
+                     <span class="glyphicon glyphicon-map-marker"></span>
+                    </a>
+                </div>
+            </td>
+
+        	<td>{{ x.address.state_name }}</td>
+
+        	<td>{{ x.seller_contact.area_code + x.seller_contact.phone }}</td>
+        	<td>{{get_attributes(x.attributes).BRAND}}</td>
+        	<td>{{get_attributes(x.attributes).ENGINE_DISPLACEMENT}}</td>
+
+        	<td>{{get_attributes(x.attributes).MODEL}}</td>
+
+
+            <td> {{ x.stop_time | date  }} [ {{get_days_to_finish(x)}}  ]
+
+        	<td> <a href='{{ x.thumbnail }}'> tnail</a></td>
+
+            <td>{{x.category_id}}</td>
+
+            <td>
+                <!-- {{ x.listing_type_id.slice(0,6) }} -->
+                <a href="#" class="fa fa-facebook"></a>
+                <a href="#" class="fa fa-twitter"></a>
+             <!-- {{x.seller.id}}         -->
+            </td>
+
+            <td>
+                <a href='https://api.mercadolibre.com/items/{{ x.id }}'>idAPI</a>
+            </td>
+
+  </tr>
+
+  </table>
+
+</div>
+
+{% endverbatim %}
+
+<h3>
+   {% load static %}
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.js"></script>
+<script src="{% static "js/searchAngularJS.js" %}"></script>
+
+</body>
+</html>

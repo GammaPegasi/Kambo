@@ -1,0 +1,63 @@
+<!--Serch using Angular JS and Ajax.It retrieves JS from the Django REST API
+    filtering by Brand and Model
+-->
+
+<!DOCTYPE html>
+<html ng-app="search_REST_API">
+<head>
+  <meta charset="utf-8">
+  <title>search_REST_API</title>
+    {% load static %}
+  <link href="{% static "/css/search_REST_API.css" %}" rel="stylesheet">
+
+</head>
+
+<body>
+
+    {% verbatim myblock %}
+    <div ng-controller="MainCtrl">
+
+    <form>
+    <input type="text" ng-model="searchKey"  ng-change="submit()" autofocus> [{{searchKey}}]
+    </form>
+    <hr>
+
+    <table style="width:100%">
+      <tr>
+        <th>pk</th>
+        <th>Brand</th>
+        <th>Model</th>
+        <th>Price</th>
+        <th>Year</th>
+        <th>Generation</th>
+        <th>Updated At</th>
+      </tr>
+
+      <tr ng-repeat="x in data.data">
+        <td>{{ x.pk }}</td>
+        <td>{{ x.brand }}</td>
+        <td>{{ x.model }}</td>
+        <td>USD {{ x.price }}</td>
+        <td> {{ x.year }}</td>
+        <td>{{ x.generation }}</td>
+        <td>{{ x.updated_at }}</td>
+
+      </tr>
+    </table>
+
+    <pre>
+        <!--Data: {{ data.data |json}}-->
+        <!--<hr>-->
+        {{ data.config |json}}
+    </pre>
+
+    {% endverbatim myblock %}
+
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.js"></script>
+    <script src="/static/js/search_REST_API.js"></script>
+</body>
+</html>
+
+

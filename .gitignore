@@ -1,0 +1,7 @@
+db.sqlite*
+db.sqlite3
+
+*.pyc
+
+mysite/**/*.pyc
+

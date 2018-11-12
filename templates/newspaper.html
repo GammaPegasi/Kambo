@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html  ng-app="myApp" ng-controller="customersCtrl">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<head>
+    <link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900,400italic,700italic,900italic|Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <title>Newspaper Style Design Experiment</title>
+
+    <meta name="viewport" content="width=device-width">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    {% load static %}
+    <link href="{% static "/css/newspaper.css" %}" rel="stylesheet">
+
+    <!--<link rel="stylesheet" href="styles/newspaper.css">-->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+    body {
+       font-size: 12px;
+    }
+    input {
+        padding-left: 5px;
+        background-color: #ececec;
+        color: #000000;
+        height: 25px;
+        font-size: 12px;
+    }
+
+    form {   margin-bottom: 50px;  }
+
+    h4 { color: aquamarine; }
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+extra: { background: black; color: white;}
+</style>
+
+</head>
+{% verbatim %}
+
+<body>
+<div class="head">
+    <div class="headerobjectswrapper">
+        <div class="weatherforcastbox"><span style="font-style: italic;">Weatherforcast for the next 24 hours: Plenty of Sunshine</span><br><span>Wind: 7km/h SSE; Ther: 21°C; Hum: 82%</span></div>
+        <header>Clasificados2 </header>
+    </div>
+
+    <!-- <div class="subhead">York, MA - Thursday August 30, 1978 - Seven Pages</div> -->
+    <div class="subhead">  Short, MA - Thursday August 30, 1978 - Seven Pages
+
+         <div>
+          <form action="/action_page.php">
+              Buscar: <input type="text" name="FirstName" value=""><br>
+          </form>
+         </div>
+
+    </div>
+
+
+
+</div>
+
+<div class="content">
+
+    <div class="collumns">
+        <div class="collumn" ng-repeat="x in items.slice(30, 50) | orderBy:sortType:sortReverse | filter:searchFish  track by $index">
+
+        <div class="head">
+                <p>
+                    <span class="headline hl6b">         {{x.title}}       <span id="price_">        {{x.currency_id}} {{ x.price }}     </span>
+                </p>
+            </div>
+
+            <div>
+                {{ x.description }}
+            </div>
+
+        <fig class="fig" src="https://mlstaticquic-a.akamaihd.net/mercedes-benz-clase-clc-200-kompressor-automsuper-full-D_NQ_NP_759567-MLU27613254976_062018-O.webp" alt="">
+        	<img class="media" style="background-image: url({{x.main_img }})" alt=""   >
+        	<figcaption class="figcaption">Hermine hoping for courage.</figcaption>
+        </fig>
+
+        <p>{{x.seller_contact.area_code }}{{x.seller_contact.phone }}</p>
+    </div>
+
+          <!--<tr ng-repeat="x in items.slice(1, 5) | orderBy:sortType:sortReverse | filter:searchFish  track by $index">-->
+          <!--  <td> {{$index}}</td>-->
+          <!--  <td> <a target="_blank" href='{{ x.permalink }}'> {{ x.id  }} </a></td>-->
+          <!--  <td>  {{ x._id.$oid  }} </td>-->
+          <!--  <td>{{ x.title }}</td>-->
+            <!--<td> {{x.currency_id}} {{ x.price }}</td>-->
+            <!--<td>{{ x.description }}</td>-->
+            <!--<td>{{ x.seller_contact.area_code }}{{ x.seller_contact.phone  | telephone }} </td>-->
+            <!--<td>{{ x.seller_address.state.name }} {{ x.seller_address.city.name }} </td>-->
+            <!--<td>{{ x.features }}</td>-->
+            <!--<td>{{ x.stop_time  | date:'dd MMMM yyyy hh:mm' }}   </td>-->
+            <!--<td>-->
+            <!--    {{ (x.stop_time  | date:'dd'| number ) }}  {{    ( today | date:'dd'| number ) }}-->
+            <!--    {{ ((x.stop_time  | date:'dd' | number)*1) +  ( today | date:'dd' | number )*1 }}-->
+            <!--</td>-->
+            <!--<td> {{x.original_site}} </td>-->
+
+
+    </div>
+
+</div>
+
+
+
+
+
+
+{% endverbatim %}
+
+
+<script>
+
+// (document.onload = function() {
+//     document.querySelector('header').style.display = 'none';
+//     document.querySelector('.subhead').style.display = 'none';
+// })();
+
+
+</script>
+<script>
+
+// var url =  'https://api.mlab.com/api/1/databases/timestamps/collections/items?apiKey=SJENoV9fQLG5t1ZjHA1XUTkyU3KMvadl';
+
+var buffer
+
+var app = angular.module('myApp', []);
+app.controller('customersCtrl', function($scope, $http) {
+
+    $scope.items = [];
+    $scope.sortType     = 'price'; // set the default sort type
+    $scope.sortReverse = false;
+    $scope.searchFish = '';     // set the default search/filter term
+    $scope.quick_search_key = 'kia';
+    $scope.collection_size = 0;
+    $scope.today = new Date();
+    $scope.isSpecial = false;
+
+    $scope.set_order_key = function (key){
+
+        $scope.isSpecial = ! $scope.isSpecial;
+
+        if (key == 'seller_address.state.name')
+            key = 'location';
+
+        if ($scope.sortType == key)
+            $scope.sortReverse = ! $scope.sortReverse
+        else {
+            old_key = $scope.sortType
+            $scope.sortType = key;
+            $('#' + old_key).css({ "font-size" : "" });
+            $('#' + key).css({ "font-size" : "initial" });
+        };
+        console.log(key);
+    }
+
+    $scope.sortReverse  = false;  // set the default sort order
+
+    $scope.quick_search = function(){
+        $scope.showLoader = true;
+
+        if ($scope.quick_search_key != ''){
+            url = 'https://kambo.pythonanywhere.com/mongo_quick_search/' + $scope.quick_search_key;
+            console.log('quick_search: ', url )
+
+            $http.get(url).then(function (response)  {
+                $scope.items = response.data;
+                // console.log($scope.items)
+                console.log('response', response)
+                $scope.showLoader = false;
+                buffer = $scope.items
+                $scope.collection_size = response.data[0].price;
+                $scope.showLoader = false;
+            });
+        }
+
+    }
+
+    $scope.init = function (){
+        url = 'https://kambo.pythonanywhere.com/mongo_quick_search/' + 'mercedes'
+        $scope.showLoader = true;
+
+        $http.get(url).then(function (response)  {
+            $scope.items = response.data;
+
+            // console.log('http_get: ', $scope.items.title)
+
+            $scope.showLoader = false;
+            buffer = $scope.items
+        });
+    }
+    angular.element(document).ready($scope.init);
+
+}).filter('telephone', function(){
+    return function(input) {
+        try{
+          return input.split(' ').join('');
+        }
+        catch(ex){
+          return '';
+        }
+
+    };
+  });
+
+
+</script>
+
+
+</body>
+</html>

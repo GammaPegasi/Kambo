@@ -1,0 +1,69 @@
+<html>
+<head>
+	<title>Message</title>
+	<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
+
+</head>
+<body>
+
+{% if cars %}
+
+    <table>
+      <tr>
+        <th>Brand</th>
+        <th>Model</th>
+        <th>Generation</th>
+        <th>Year</th>
+        <th>Milleage KM</th>
+        <th>URL</th>
+        <th>Phone</th>
+      </tr>
+
+    {% for car in cars %}
+      <tr>
+        <td>{{car.brand}}</td>
+        <td>{{car.model}}</td>
+        <td>{{car.generation}}</td>
+        <td>{{car.year}}</td>
+        <td>{{car.milleageKM}}</td>
+        <td>{{car.url}}</td>
+        <td>{{car.phone}}</td>
+      </tr>
+    {% endfor %}
+
+    </table>
+
+{% else  %}
+
+<h2>No records were found</h2>
+
+{% endif  %}
+
+
+
+
+<pre>
+request: {{req}}
+request content_params: {{params}}
+request get_host: {{host}}
+request get_host: {{brand}}
+</pre>
+
+</body>
+</html>

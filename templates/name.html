@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Name</title>
+</head>
+
+<style>
+    li{ color: blue;}
+</style>
+
+<body>
+<hr>
+<form action="/get_name/" method="post">
+
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Submit">
+</form>
+
+</body>
+
+</html>

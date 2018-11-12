@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+{% include "src_template.html" %}
+<title>json_favorite_template</title>
+{% load static %}
+<link href="{% static "/css/bootstrap.min.css" %}" rel="stylesheet">
+<link href="{% static "/css/searchAngularJS.css" %}" rel="stylesheet">
+<style>
+    body {
+    /* font-size: smaller; */
+    /* background-image: url(https://www.wallpaperup.com/uploads/wallpapers/2014/05/01/347388/2fb835b…-1400.jpg); */
+    /* background-image: url(http://kb4images.com/images/image-blur/36672573-image-blur.jpg); */
+    /* background-color: black; */
+    /*background-image: url("http://casswww.ucsd.edu/archive/public/tutorial/images/her_cl.jpg");*/
+    background-repeat: no-repeat;
+    /*background-color: #1d1c1c;*/
+    margin-top: 10px;
+    font-size: 18px;
+    }
+    input {
+        padding-left: 5px;
+        background-color: #2e3737;
+        color: #c7ceee;
+    }
+    form {   margin-bottom: 50px;  }
+
+</style>
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.js"></script>
+
+<script>
+var app = angular.module('search_in_files', []);
+app.controller('MainCtrl', function($scope,$http ) {
+
+    $scope.showLoader = false;
+    $scope.prod_key = "";
+    $scope.username = '{{user}}' ;
+    $scope.message = "*** hello ****";
+    $scope.favorites = null;
+
+    $scope.myDelete = function (id) {
+        console.log("DELETE .", id);
+        $scope.data = $scope.data.filter( x => x.id_prod != id)
+
+        // JSON => update_remove(id) *******
+
+    };
+
+    $scope.myUserFavorite = function () {
+        $http.get("https://kambo.pythonanywhere.com/favorite/?search=" + $scope.username)
+            .then(function(response) {
+                // $scope.data = JSON.parse(response.data);
+                console.log(response);
+                $scope.data = response.data;
+                $scope.showLoader = false;
+            });
+    };
+
+    // $scope.push_favorite = function () {
+    //     $scope.showLoader = true;
+    //     $http.get("https://kambo.pythonanywhere.com/favorite/?search=juan")
+    //         .then(function(response) {
+    //             $scope.favorites = response;
+    //             $scope.submit();
+    //             console.log('AFTER PUSHING JSON: ', response);
+    //              $scope.showLoader = false;
+    //             // $scope.data = JSON.parse(response.data);
+    //         });
+    // };
+
+    // $scope.myUserFavorite();
+});
+</script>
+
+<body ng-app="search_in_files" ng-controller="MainCtrl">
+<div style="margin-left: 30px;" class="container">
+
+    Welcome  {{user}}  <hr>
+
+    <form>
+    <input type="text" ng-model="username" autofocus > <button ng-click="myUserFavorite()">Search my user </button>
+    </form>
+
+
+{% verbatim %}
+
+    <div ng-show="showLoader">
+        <img src="https://loading.io/spinners/dual-ring/lg.dual-ring-loader.gif" height="60" width="60">
+    </div>
+<!--<pre> {{favorites.data.id_prod | json }} </pre>-->
+    <pre>{{ data | json }} </pre>
+    <hr>
+
+    <div ng-repeat="x in data">
+        [{{$index + 1}}] {{x.id_prod}} <button ng-click="myDelete(x.id_prod)"> Delete </button>
+    </div>
+
+{% endverbatim %}
+</div>
+</body>
+</html>

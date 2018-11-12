@@ -1,0 +1,33 @@
+table, th, td, pre {
+    border: 1px solid black;
+    border-collapse: collapse;
+    color: #1ee61e;
+}
+
+form, {
+    border: 1px solid red;
+    border-collapse: collapse;
+}
+
+body  {
+    /*background-image: url("https://www.wallpaperup.com/uploads/wallpapers/2014/05/01/347388/2fb835b48c4de491bca8053239620ba3-1400.jpg");*/
+    /*background-image: url("https://loveisinmytummy.com/wp-content/uploads/2017/07/New-Blue-Background-Main-2.jpg");*/
+
+    /*background-repeat: no-repeat;*/
+    background-color: #212121;
+}
+
+th, td {
+    padding: 5px;
+    text-align: left;
+}
+table#t01 {
+    width: 100%;
+    background-color: #f1f1c1;
+}
+label {
+    background: teal;
+    margin: 10px;
+    border: 10px;
+}
+

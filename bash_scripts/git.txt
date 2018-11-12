@@ -1,0 +1,6 @@
+git init
+git add .
+git config --global user.name AlexVillarreal
+git config --global user.email buffer10gb@gmail.com
+git commit
+git push -u origin master

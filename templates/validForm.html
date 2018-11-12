@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>validForm</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+<link href="/static/css/validForm.css" rel="stylesheet">
+
+</head>
+<body>
+<div class="container">
+  <div class="content-container">
+
+    <form action="/validForm/" method="post">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <!--<div class="fieldWrapper">-->
+        <!--    {{ form.username.errors }}-->
+        <!--    {{ form.username.label_tag }}-->
+        <!--    {{ form.username }}-->
+        <!--</div>-->
+
+        <!--<div class="fieldWrapper">-->
+        <!--    {{ form.password.errors }}-->
+        <!--    {{ form.password.label_tag }}-->
+        <!--    {{ form.password }}-->
+        <!--</div>-->
+
+        <button class="btn btn-primary">Submit</button>
+        <button class="btn btn-primary">Face</button>
+
+    </form>
+
+  </div>
+</div>
+
+<div>
+<pre>
+If the email address is not valid Django displays a label error next to the email input field.
+Change CSS for Bootstrap
+
+</pre>
+</div>
+
+</body>
+</html>
+

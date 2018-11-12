@@ -1,0 +1,139 @@
+<!--Simple search box and paginator -->
+
+<html>
+<head>
+	<title>Search</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap 3, from LayoutIt!</title>
+    <meta name="description" content="Source code generated using layoutit.com">
+    <meta name="author" content="LayoutIt!">
+
+    {% load static %}
+
+    <link href="{% static "/css/bootstrap.min.css" %}" rel="stylesheet">
+    <link href="{% static "/css/style.css" %}" rel="stylesheet">
+<style>
+table {
+    font-size: 1.2rem;
+  }
+
+#content{
+    margin: 5px;
+    /*margin-top: 10px;*/
+
+}
+</style>
+
+</head>
+<body>
+
+<div id="content">
+    <form action="/search/" method="get" class="navbar-form navbar-left" role="search">
+        <!--{% csrf_token %}-->
+        <!--{{ form }}-->
+        <div class="form-group">
+            {% if req_param %}
+            <input type="text" name="brand" value={{req_param}} class="form-control">
+            {% else %}
+            <input type="text" name="brand" value="" class="form-control">
+            {% endif %}
+            <input type="submit" value="Submit" class="btn btn-default"/>
+        </div>
+    </form>
+
+<div>
+    {% if setCars %}
+
+        <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Brand</th>
+            <th scope="col">Model</th>
+            <th scope="col">Generation</th>
+            <!--<th scope="col">Year</th>-->
+            <!--<th scope="col">Milleage KM</th>-->
+            <!--<th scope="col">Created</th>-->
+            <th scope="col">Updated</th>
+          </tr>
+         <thead>
+        <tbody>
+
+        {% for car in setCars %}
+          <tr>
+            <td>{{car.brand}}</td>
+            <td>{{car.model}}</td>
+            <td>{{car.generation}}</td>
+            <!--<td>{{car.year}}</td>-->
+            <!--<td>{{car.milleageKM}}</td>-->
+            <!--<td>{{car.created_at}}</td>-->
+            <td>{{car.updated_at}}</td>
+          </tr>
+        {% endfor %}
+
+        </tbody>
+        </table>
+
+    {% else  %}
+    <p class="h2">No records were found</p>
+    {% endif  %}
+</div>
+
+<div class="pagination">
+    <span class="step-links">
+        {% if setCars.has_previous %}
+            <a href="?page=1&brand={{req_param}}">&laquo; first</a>
+            <a href="?page={{ setCars.previous_page_number }}&brand={{req_param}}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ setCars.number }} of {{ setCars.paginator.num_pages }}.
+        </span>
+
+        {% if setCars.has_next %}
+            <a href="?page={{ setCars.next_page_number }}&brand={{req_param}}">next</a>
+            <a href="?page={{ setCars.paginator.num_pages }}&brand={{req_param}}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+
+
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+    {% if setCars.has_previous %}
+    <li class="page-item"><a class="page-link" href="?page={{ setCars.previous_page_number }}&brand={{req_param}}">Previous</a></li>
+    {% else %}
+    <li class="page-item"><a class="page-link" href="#">........  </a></li>
+    {% endif %}
+
+    <li class="page-item"><a class="page-link" href="#">Page {{ setCars.number }} of {{ setCars.paginator.num_pages }}</a></li>
+    <!--<li class="page-item"><a class="page-link" href="#">2</a></li>-->
+    <!--<li class="page-item"><a class="page-link" href="#">3</a></li>-->
+    {% if setCars.has_next %}
+    <li class="page-item"><a class="page-link" href="?page={{ setCars.next_page_number }}&brand={{req_param}}">Next</a></li>
+    {% endif  %}
+  </ul>
+</nav>
+
+
+
+
+<pre>
+request: {{req}}
+request content_params: {{params}}
+request get_host: {{host}}
+req_param : {{req_param}}
+paginator.object_list: {{setCars.object_list}}
+PAGINA: {{pagina}}
+
+</pre>
+
+    <script src="{% static "js/jquery.min.js" %}" ></script>
+    <script src="{% static "js/bootstrap.min.js" %}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.js"></script>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+
+ #fila1{ border-style: solid; border-color: red; border-width: 1px;}
+ #fila2{ border-style: solid; border-color: blue; border-width: 1px;}
+
+ .col-12.col-md-8, .col-6.col-md-4, .row .col-md-4{ border-style: solid; border-color: green; border-width: 1px;}
+
+ .container.mycontainer { margin: auto;background-color: #d4d4a1;
+ 	width: 50%;     border: 3px solid green;     padding: 10px;}
+
+ .img-fluid { max-width: 100%; max-height: 150px; }
+
+ .navbar-default {
+		background-color: #bcd9e8;
+	border-color: #e7e7e7;
+}
+
+#img-container{
+	position: relative;
+    text-align: center;
+    color: white;
+}
+
+.centered {
+	position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #7b7b31;
+    }
+
+/*body{ background-color: #dfdfff}*/

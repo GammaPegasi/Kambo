@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html ng-app="plunker">
+<head>
+  <meta charset="utf-8">
+  <title>jQuery.getJSON demo</title>
+  <style>
+  img {
+    height: 100px;
+    float: left;
+  }
+  </style>
+
+  <!--<script src="https://code.jquery.com/jquery-1.10.2.js"></script>-->
+
+</head>
+<body>
+
+<pre_>
+<div id="message"></div>
+</pre_>
+
+<script>
+
+// (function() {
+//   var flickerAPI = "https://kambo.pythonanywhere.com/car_view/?search=for";
+
+//   $.getJSON( flickerAPI, {
+//     tags: "mount rainier",
+//     tagmode: "any",
+//     format: "json"
+//   })
+//     .done(function(data) {
+
+//       data.forEach( function( i, item ) {
+//           console.log(i, item);
+//         // $( "<img>" ).attr( "src", item.media.m ).appendTo( "#images" );
+
+//       });
+
+//       console.table(data);
+//       document.getElementById("message").innerText = JSON.stringify(data, null, '\t');
+
+//     });
+// })();
+
+</script>
+
+<!--<div ng-app="myApp" ng-controller="myCtrl">-->
+<!--    <p>Today's welcome message is:</p>-->
+<!--    <h1>{{ theme }}</h1>-->
+<!--</div>-->
+
+
+<div ng-controller="MainCtrl">
+    <p>Name is:</p>
+    <h1>{{ MainCtrl.name }}</h1>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.js"></script>
+<script src="/static/js/app.js"></script>
+
+<script>
+</script>
+
+</body>
+</html>
+
+
