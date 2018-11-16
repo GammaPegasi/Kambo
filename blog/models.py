@@ -65,11 +65,7 @@ class Car(models.Model):
         year =       models.PositiveIntegerField(null=True)
         milleageKM = models.PositiveIntegerField(null=True)
         seller =      models.ForeignKey(Seller, blank=True, null = True,  on_delete=models.CASCADE)
-<<<<<<< HEAD
-=======
 
-
->>>>>>> 698d64d5a6be21c82f017929d8bfa8a5b41ac1ef
         json_rep =  models.TextField(blank=True)
 
         # def __unicode__(self):
