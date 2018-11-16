@@ -29,57 +29,35 @@ def logout_view(request):
     return HttpResponseRedirect('/get_name/')
 
 def validForm(request):
-    # if this is a POST request we need to process the form data
     if request.method == 'POST':
-        # create a form instance and populate it with data from the request:
         form = ValidForm(request.POST)
-        # check whether it's valid:
         if form.is_valid():
-            # process the data in form.cleaned_data as required
             # userName = form.cleaned_data['username']
             # message = form.cleaned_data['message']
-
-            # Redirect to a success page.
             return render(request, 'submitedData.html', {'formFields' : form.cleaned_data, 'extradata': form.data } )
-
     # if a GET (or any other method) we'll create a blank form
     else:
         form = ValidForm(initial = { 'username': 'alexa' })
 
-        # form = AuthenticationForm()
-
     return render(request, 'validForm.html', {'form': form })
 
 def get_name(request):
-    # if this is a POST request we need to process the form data
     if request.method == 'POST':
-        # create a form instance and populate it with data from the request:
-
         form = ContactForm(request.POST)
-        # form = AuthenticationForm(request.POST)
-
-        # check whether it's valid:
         if form.is_valid():
-            # process the data in form.cleaned_data as required
             userName = form.cleaned_data['username']
             password = form.cleaned_data['password']
             user = authenticate(username=userName, password=password)
             if user is not None:
                 login(request, user)
-                # Redirect to a success page.
                 return render(request, 'thanks.html', {'formFields' : form.cleaned_data, 'repr' : form.data } )
-                # A backend authenticated the credentials
             else:
-                # No backend authenticated the credentials
                  # Return an 'invalid login' error message.
                 return render(request, 'thanks.html', {'formFields' : form.cleaned_data, 'repr' : 'INVALID USER OR PASSWORD'  } )
-            # redirect to a new URL:
             # return HttpResponseRedirect('/thanks/' + form.cleaned_data['message'])
-
     # if a GET (or any other method) we'll create a blank form
     else:
         form = ContactForm()
-        # form = AuthenticationForm()
 
     return render(request, 'loginForm.html', {'form': form })
 

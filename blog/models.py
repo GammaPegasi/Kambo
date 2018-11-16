@@ -64,7 +64,7 @@ class Car(models.Model):
         price =      models.PositiveIntegerField()
         year =       models.PositiveIntegerField(null=True)
         milleageKM = models.PositiveIntegerField(null=True)
-        seller =      models.ForeignKey(Seller, blank=True, null = True)
+        seller =      models.ForeignKey(Seller, blank=True, null = True,  on_delete=models.CASCADE)
         json_rep =  models.TextField(blank=True)
 
         # def __unicode__(self):
