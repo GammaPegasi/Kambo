@@ -25,7 +25,7 @@ SECRET_KEY = '%=lb=p43-yob=uj4nv@ml25&2g=v0ut^=zarsx#vo$h=39=s)#'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [u'kambo.pythonanywhere.com', '127.0.0.1']
+ALLOWED_HOSTS = [u'kambo.pythonanywhere.com']
 
 
 import sys
@@ -49,7 +49,7 @@ REST_FRAMEWORK = {
     # 'rest_framework.filters.SearchFilter',)
 }
 
-SECURE_SSL_REDIRECT = False
+SECURE_SSL_REDIRECT = True
 
 # Application definition
 
@@ -147,44 +147,12 @@ STATIC_URL = '/static/'
 
 # default static files settings for PythonAnywhere.
 # see https://help.pythonanywhere.com/pages/DjangoStaticFiles for more info
-
-# MEDIA_ROOT = u'/mysite/media'
-
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-MEDIA_URL = '/media/' 
-
-
-# STATIC_ROOT = u'/home/kambo/mysite/static'
-# STATIC_ROOT = u'/kambo/mysite/static'
-# STATIC_ROOT = u'/mysite/static'
-
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-# STATIC_URL = '/static/'
+MEDIA_ROOT = u'/home/kambo/mysite/media'
+MEDIA_URL = '/media/'
+STATIC_ROOT = u'/home/kambo/mysite/static'
+STATIC_URL = '/static/'
 
 
 # TEMPLATE_CONTEXT_PROCESSORS = (
 #   'django.core.context_processors.request',
 # )
-
-# print('STATIC_ROOT', STATIC_ROOT)
-# print('STATIC_URL', STATIC_URL) 
-print('MEDIA_ROOT', MEDIA_ROOT)
-
-
-# STATIC_ROOT = u'/static'
-
-STATIC_URL = '/static/'
-
-
-print('BASE_DIR', BASE_DIR)
-# print('STATIC_ROOT', STATIC_ROOT)
-
-
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
-    # '/var/www/static/',
-    '/static/',
-]
-
-print('STATICFILES_DIRS', STATICFILES_DIRS)
