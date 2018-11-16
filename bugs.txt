@@ -1,2 +1,5 @@
 Remove special characters like Citroën
 Search no considera espacios en blanco ni puntos
+
+
+using the WindowsVersion branch
