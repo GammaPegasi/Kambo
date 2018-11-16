@@ -61,7 +61,10 @@ app.controller('customersCtrl', function($scope, $http) {
         $scope.showLoader = true;
 
         if ($scope.quick_search_key != ''){
-            url = 'https://kambo.pythonanywhere.com/mongo_quick_search/' + $scope.quick_search_key;
+            // url = 'https://kambo.pythonanywhere.com/mongo_quick_search/' + $scope.quick_search_key;
+            url = '/mongo_quick_search/' + $scope.quick_search_key;
+            
+
             console.log('quick_search: ', url )
 
             $http.get(url).then(function (response)  {
@@ -92,7 +95,9 @@ app.controller('customersCtrl', function($scope, $http) {
 
     // angular.element(document).ready($scope.init_popups);
     $scope.init = function (){
-        url = 'https://kambo.pythonanywhere.com/mongo_quick_search/' + 'a'
+        // url = 'https://kambo.pythonanywhere.com/mongo_quick_search/' + 'a'
+        url = '/mongo_quick_search/' + 'a'
+
         $scope.showLoader = true;
         $http.get(url).then(function (response)  {
             $scope.items = response.data;
