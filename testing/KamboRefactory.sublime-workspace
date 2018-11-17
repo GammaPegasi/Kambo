@@ -1,0 +1,445 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"stat",
+				"STATIC_URL"
+			],
+			[
+				"Sta",
+				"STATIC_ROOT"
+			],
+			[
+				"xml",
+				"xmlDoc"
+			],
+			[
+				"border",
+				"border-color"
+			],
+			[
+				"bo",
+				"border-style"
+			],
+			[
+				"back",
+				"background"
+			],
+			[
+				"produ",
+				"product_key"
+			],
+			[
+				"re",
+				"request"
+			],
+			[
+				"H",
+				"HttpResponse"
+			],
+			[
+				"ba",
+				"background-color"
+			],
+			[
+				"time",
+				"timeVector"
+			],
+			[
+				"comen",
+				"comments"
+			],
+			[
+				"border-s",
+				"border-style"
+			],
+			[
+				"inline",
+				"inline-flex"
+			],
+			[
+				"categ",
+				"category"
+			],
+			[
+				"fis",
+				"first_add"
+			],
+			[
+				"da",
+				"data2"
+			],
+			[
+				"cate",
+				"categ_name"
+			],
+			[
+				"data",
+				"database"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"ea",
+				"each"
+			],
+			[
+				"url",
+				"urlProd"
+			],
+			[
+				"save",
+				"saveFile"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "retrie",
+		"selected_items":
+		[
+			[
+				"retrie",
+				"Preferences: Settings – Syntax Specific"
+			],
+			[
+				"",
+				"Indentation: Reindent Lines"
+			]
+		],
+		"width": 416.0
+	},
+	"console":
+	{
+		"height": 146.0,
+		"history":
+		[
+			"dir"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/Users/Alx/GIT/KamboRefactory"
+	],
+	"file_history":
+	[
+		"/C/Users/Alx/GIT/kambo_anywhere/kambo/.gitignore",
+		"/C/Users/Alx/Desktop/WinPython-64bit-3.6.3.0Qt5/mysite/backup Scrap Cars/PythonAnyWhere/mysite/openMongo.py",
+		"/C/Users/Alx/GIT/FromPythonAnyWhere/kambo/bugs.txt",
+		"/C/Users/Alx/GIT/FromPythonAnyWhere/kambo/blog/models.py",
+		"/C/Users/Alx/GIT/FromPythonAnyWhere/kambo/mysite/settingsWindows.py",
+		"/C/Users/Alx/GIT/FromPythonAnyWhere/kambo/mysite/settings.py",
+		"/C/Users/Alx/GIT/KamboAnyWhere/kambo/blog/models.py",
+		"/C/Users/Alx/GIT/KamboRefactory/scrapML/templates/scrapML/index.html",
+		"/C/Users/Alx/GIT/FromPythonAnyWhere/kambo/readmeGIT.txt",
+		"/C/Users/Alx/GIT/KamboRefactory/scrapML/views.py",
+		"/C/Users/Alx/GIT/KamboRefactory/scrapML/urls.py",
+		"/C/Users/Alx/GIT/KamboRefactory/scrapML/forms.py",
+		"/C/Users/Alx/kambo/Kambo/blog/admin.py",
+		"/C/Users/Alx/kambo/Kambo/mysite/urls.py",
+		"/C/Users/Alx/kambo/Kambo/blog/models.py",
+		"/C/Users/Alx/GIT/KamboRefactory/scrapML/templates/scrapML/submitedData.html",
+		"/C/Users/Alx/GIT/KamboRefactory/scrapML/templates/scrapML/signInUPForm.html",
+		"/C/Users/Alx/GIT/KamboRefactory/readme_GIT.txt",
+		"/C/Users/Alx/GIT/KamboRefactory/scrapML/templates/scrapML/validForm.html",
+		"/C/Users/Alx/GIT/KamboRefactory/static/css/signUpForm.css",
+		"/C/Users/Alx/GIT/KamboRefactory/static/css/signIn_signUp_Form.css",
+		"/C/Users/Alx/GIT/KamboRefactory/scrapML/templates/scrapML/sign_In_Up_Static_Form.html",
+		"/C/Users/Alx/GIT/KamboRefactory/static/css/validForm.css",
+		"/C/Users/Alx/GIT/KamboRefactory/mysite/urls.py",
+		"/C/Users/Alx/GIT/KamboRefactory/polls/urls.py",
+		"/C/Users/Alx/GIT/KamboRefactory/mysite/settings.py",
+		"/C/Users/Alx/GIT/KamboRefactory/asembly/urls.py",
+		"/C/Users/Alx/GIT/KamboRefactory/polls/views.py",
+		"/C/Users/Alx/GIT/KamboRefactory/asembly/views.py",
+		"/C/Users/Alx/GIT/KamboRefactory/asembly/apps.py",
+		"/C/Users/Alx/GIT/KamboRefactory/polls/apps.py",
+		"/C/Users/Alx/kambo/Kambo/README.txt",
+		"/C/Users/Alx/CopyKamboFromGitHub/KamboRefactory/polls/urls.py",
+		"/C/Users/Alx/CopyKamboFromGitHub/KamboRefactory/mysite/urls.py",
+		"/C/Users/Alx/CopyKamboFromGitHub/KamboRefactory/mysite/settings.py",
+		"/C/Users/Alx/CopyKamboFromGitHub/KamboRefactory/polls/templates/polls/detail.html",
+		"/C/Users/Alx/CopyKamboFromGitHub/KamboRefactory/polls/templates/polls/index.html",
+		"/C/Users/Alx/CopyKamboFromGitHub/KamboRefactory/polls/views.py",
+		"/C/Users/Alx/CopyKamboFromGitHub/KamboRefactory/polls/templates/admin/base_site_original.html",
+		"/C/Users/Alx/CopyKamboFromGitHub/KamboRefactory/polls/templates/admin/base_site.html",
+		"/C/Users/Alx/CopyKamboFromGitHub/KamboRefactory/polls/templates/polls/results.html",
+		"/C/Users/Alx/CopyKamboFromGitHub/KamboRefactory/polls/model_API_test.py",
+		"/C/Users/Alx/Desktop/WinPython-64bit-3.6.3.0Qt5/django-rest-framework-master/rest_framework/test.py",
+		"/C/Users/Alx/CopyKamboFromGitHub/KamboRefactory/polls/models.py",
+		"/C/Users/Alx/CopyKamboFromGitHub/KamboRefactory/polls/admin.py",
+		"/C/Users/Alx/CopyKamboFromGitHub/KamboRefactory/polls/static/polls/style.css",
+		"/C/Users/Alx/CopyKamboFromGitHub/KamboRefactory/polls/tests.py",
+		"/C/Users/Alx/AppData/Local/Programs/Python/Python36-32/Lib/site-packages/django/contrib/admin/templates/admin/base_site.html",
+		"/C/Users/Alx/CopyKamboFromGitHub/KamboRefactory/polls/templates/polls/style.css",
+		"/C/Users/Alx/CopyKamboFromGitHub/KamboRefactory/polls/testClient.py",
+		"/C/Users/Alx/CopyKamboFromGitHub/KamboRefactory/polls/templates/polls/base.html",
+		"/C/Users/Alx/CopyKamboFromGitHub/KamboRefactory/readme_GIT.txt",
+		"/C/Users/Alx/CopyKambo/mysite/polls/views.py",
+		"/C/Users/Alx/CopyKambo/mysite/polls/urls_generics.py",
+		"/C/Users/Alx/CopyKambo/mysite/polls/urls.py",
+		"/C/Users/Alx/CopyKambo/mysite/mysite/urls.py",
+		"/C/Users/Alx/CopyKambo/mysite/polls/templates/polls/results.html",
+		"/C/Users/Alx/CopyKambo/mysite/polls/templates/polls/index.html",
+		"/C/Users/Alx/CopyKambo/mysite/.gitignore",
+		"/C/Users/Alx/CopyKambo/README.txt",
+		"/C/Users/Alx/CopyKambo/mysite/polls/templates/polls/detail.html",
+		"/C/Users/Alx/CopyKambo/mysite/polls/models.py",
+		"/C/Users/Alx/CopyKambo/mysite/polls/model_intervace_test.py",
+		"/C/Users/Alx/CopyKambo/mysite/polls/admin.py",
+		"/C/Users/Alx/CopyKambo/mysite/mysite/settings.py",
+		"/C/Users/Alx/CopyKambo/mysite/polls/detail.html",
+		"/C/Users/Alx/CopyKambo/mysite/polls/migrations/__pycache__/sole.txt",
+		"/C/Users/Alx/CopyKambo/mysite/readme.txt",
+		"/C/Users/Alx/CopyKambo/mysite/dir.txt",
+		"/C/Users/Alx/CopyKambo/.gitignore",
+		"/C/Users/Alx/CopyKambo/readme.txt",
+		"/C/Users/Alx/kambo/Kambo/mysite/settings.py",
+		"/C/Users/Alx/kambo/Kambo/mysite/README SOLVE ISUES.txt",
+		"/C/Users/Alx/kambo/Kambo/manage.py",
+		"/C/Users/Alx/Desktop/WinPython-64bit-3.6.3.0Qt5/mysite/manage.py",
+		"/C/Users/Alx/kambo/Kambo/templates/camera.html",
+		"/C/Users/Alx/Desktop/WinPython-64bit-3.6.3.0Qt5/mysite/mysite/settings.py",
+		"/C/Users/Alx/Desktop/wceu-2017-day-2/css/style.css",
+		"/C/Users/Alx/METEOR-PROJECTS/first_app/server/main.js",
+		"/C/Users/Alx/Downloads/mL/JavaScript understanding the weird parts.html",
+		"/C/Users/Alx/Desktop/Design/parsingML_map_url.html",
+		"/C/Users/Alx/Desktop/Design/mercadoLibreMap.html",
+		"/C/Users/Alx/Desktop/Design/mapQuest.html",
+		"/C/Users/Alx/Desktop/Design/mercadoLibreMap2.html",
+		"/C/Users/Alx/Desktop/Design/MapMarkersCircles.html",
+		"/C/Users/Alx/Downloads/mL/ramda.html",
+		"/C/Users/Alx/Downloads/mL/testdome.com problem .py",
+		"/C/Users/Alx/Downloads/mL/jqueryXML.html",
+		"/C/Users/Alx/Downloads/mL/ml_prod.json",
+		"/C/Users/Alx/Desktop/Design/styles/newspaper.css",
+		"/C/Users/Alx/Desktop/Design/index2.html",
+		"/C/Users/Alx/Desktop/WinPython-64bit-3.6.3.0Qt5/REST/Tutorial/tutorial/quickstart/models.py",
+		"/C/Users/Alx/Downloads/mL/ml.html",
+		"/C/Users/Alx/Downloads/mL/descriptions.txt",
+		"/C/Users/Alx/Downloads/mL/ml.json",
+		"/C/Users/Alx/Desktop/WinPython-64bit-3.6.3.0Qt5/REST/Tutorial/tutorial/quickstart/serializers.py",
+		"/C/Users/Alx/Desktop/WinPython-64bit-3.6.3.0Qt5/REST/Tutorial/tutorial/quickstart/car.txt",
+		"/C/Users/Alx/Desktop/WinPython-64bit-3.6.3.0Qt5/REST/Tutorial/tutorial/quickstart/views.py",
+		"/C/Users/Alx/Desktop/WinPython-64bit-3.6.3.0Qt5/REST/Tutorial/tutorial/tutorial/urls.py",
+		"/C/Users/Alx/Desktop/WinPython-64bit-3.6.3.0Qt5/mysite/django/django/contrib/admin/filters.py",
+		"/C/Users/Alx/Desktop/WinPython-64bit-3.6.3.0Qt5/REST/mercLibreAPI.html",
+		"/C/Users/Alx/Desktop/WinPython-64bit-3.6.3.0Qt5/REST/mercLibreAPI.js",
+		"/C/Users/Alx/simple-todos/client/main.js",
+		"/C/Users/Alx/METEOR-PROJECTS/first_app/client/main.html",
+		"/C/Users/Alx/Desktop/WinPython-64bit-3.6.3.0Qt5/REST/style.css",
+		"/C/Users/Alx/Desktop/WinPython-64bit-3.6.3.0Qt5/REST/Tutorial/tutorial/quickstart/Templates/about.html",
+		"/C/Users/Alx/Desktop/WinPython-64bit-3.6.3.0Qt5/REST/Tutorial/tutorial/tutorial/settings.py",
+		"/C/Users/Alx/Desktop/WinPython-64bit-3.6.3.0Qt5/django-rest-framework-master/rest_framework/viewsets.py",
+		"/C/Users/Alx/Desktop/WinPython-64bit-3.6.3.0Qt5/django-rest-framework-master/rest_framework/views.py",
+		"/C/Users/Alx/Desktop/WinPython-64bit-3.6.3.0Qt5/mysite/django/django/contrib/auth/models.py",
+		"/C/Users/Alx/Desktop/WinPython-64bit-3.6.3.0Qt5/REST/Tutorial/tutorial/quickstart/urls.py",
+		"/C/Users/Alx/Desktop/WinPython-64bit-3.6.3.0Qt5/django-rest-framework-master/rest_framework/mixins.py",
+		"/C/Users/Alx/Desktop/WinPython-64bit-3.6.3.0Qt5/django-rest-framework-master/rest_framework/response.py",
+		"/C/Users/Alx/Desktop/WinPython-64bit-3.6.3.0Qt5/mysite/django/django/views/generic/base.py",
+		"/C/Users/Alx/Desktop/WinPython-64bit-3.6.3.0Qt5/mysite/django/django/template/response.py",
+		"/C/Users/Alx/Desktop/WinPython-64bit-3.6.3.0Qt5/REST/Tutorial/tutorial/tutorial/examples.py",
+		"/C/Users/Alx/Desktop/WinPython-64bit-3.6.3.0Qt5/mysite/django/django/contrib/admin/options.py",
+		"/C/Users/Alx/Desktop/WinPython-64bit-3.6.3.0Qt5/REST/Tutorial/tutorial/quickstart/admin.py",
+		"/C/Users/Alx/Desktop/WinPython-64bit-3.6.3.0Qt5/REST-API-Basics/src/postings/api/views.py",
+		"/C/Users/Alx/Desktop/WinPython-64bit-3.6.3.0Qt5/REST/Tutorial/env/Include/pybind11/pytypes.h",
+		"/C/Users/Alx/Desktop/WinPython-64bit-3.6.3.0Qt5/mysite/django/django/contrib/auth/mixins.py",
+		"/C/Users/Alx/Desktop/WinPython-64bit-3.6.3.0Qt5/mysite/backup Scrap Cars/PythonAnyWhere/mysite/static/node_modules/jquery/dist/jquery.js",
+		"/C/Users/Alx/Desktop/WinPython-64bit-3.6.3.0Qt5/mysite/django/django/views/generic/edit.py",
+		"/C/Users/Alx/Desktop/WinPython-64bit-3.6.3.0Qt5/mysite/django/django/contrib/auth/base_user.py",
+		"/C/Users/Alx/Desktop/WinPython-64bit-3.6.3.0Qt5/mysite/django/django/core/validators.py",
+		"/C/Users/Alx/Desktop/WinPython-64bit-3.6.3.0Qt5/mysite/django/django/contrib/auth/validators.py",
+		"/C/Users/Alx/Desktop/WinPython-64bit-3.6.3.0Qt5/mysite/django/django/db/models/base.py",
+		"/C/Users/Alx/Desktop/WinPython-64bit-3.6.3.0Qt5/mysite/django/django/contrib/auth/views.py"
+	],
+	"find":
+	{
+		"height": 27.0
+	},
+	"find_in_files":
+	{
+		"height": 104.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": false
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 27.0
+	},
+	"input":
+	{
+		"height": 39.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "KamboRefactory.sublime-project",
+	"replace":
+	{
+		"height": 50.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"TEST",
+				"kambo\\testing\\test_unit.py"
+			],
+			[
+				"sign_in_form",
+				"KamboRefactory\\scrapML\\templates\\scrapML\\signIn_signUp_Form.html"
+			],
+			[
+				"signupform",
+				"KamboRefactory\\static\\css\\signUpForm.css"
+			],
+			[
+				".gi",
+				"CopyKambo\\mysite\\.gitignore"
+			],
+			[
+				"admin",
+				"Kambo\\blog\\admin.py"
+			],
+			[
+				"mana",
+				"Kambo\\manage.py"
+			],
+			[
+				"manage",
+				"mysite\\manage.py"
+			],
+			[
+				"settin",
+				"mysite\\mysite\\settings.py"
+			],
+			[
+				"viewset",
+				"django-rest-framework-master\\rest_framework\\viewsets.py"
+			],
+			[
+				"urls",
+				"mysite\\django\\tests\\admin_custom_urls\\urls.py"
+			],
+			[
+				"soc",
+				"servidor_web_bak.c"
+			],
+			[
+				"main",
+				"main_tok.c"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 347.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

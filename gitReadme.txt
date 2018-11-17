@@ -28,6 +28,10 @@ git merge origin/master
 
 branck checkout commit
 
+Print out the history of your commits, showing where your branck pointers are and how your history has diverged.
+
+
+git log --oneline --decorate --graph --all
 
 
 

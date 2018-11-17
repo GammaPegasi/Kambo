@@ -2,7 +2,11 @@ from django.test import Client
 import urllib
 
 c = Client()
-# response = c.post('/admin/', {'username': 'jane', 'password': 'janejane'})
+
+print('TEST UNIT ')
+response = c.post('/admin/', {'username': 'jane', 'password': 'janejane'})
+
+
 # response = c.post('/login/', {'username': 'john', 'password': 'smith'})
 # response = c.post('/list_cars_json')
 
@@ -20,4 +24,5 @@ c = Client()
 # print (response.status_code )
 # print(response.content)
 # print()
+
 
