@@ -24,3 +24,10 @@ Yes, you can use caret notation as well.
 If you want to accept the remote changes:
 
 git merge origin/master
+
+
+branck checkout commit
+
+
+
+
