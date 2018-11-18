@@ -72,16 +72,16 @@ def submitedData(request):
 def salvattore(request):
    return render(request, 'salvattore.html')
 
-@login_required(login_url='/loginForm/')
+@login_required()
 def newspaper(request):
    return render(request, 'newspaper.html')
 
 
-@login_required(login_url='/loginForm/')
+@login_required()
 def camera(request ):
    return render(request, 'camera.html')
 
-@login_required(login_url='/loginForm/')
+@login_required()
 def view_mongo(request, searchKey ):
     client = pymongo.MongoClient('mongodb://hora:hora@ds111798.mlab.com:11798/timestamps')
     db = client.timestamps
@@ -93,7 +93,7 @@ def view_mongo(request, searchKey ):
     return HttpResponse(docs, content_type='application/json', )
 
 
-@login_required(login_url='/loginForm/')
+@login_required()
 def mongo_quick_search(request, searchKey):
     client = pymongo.MongoClient('mongodb://hora:hora@ds111798.mlab.com:11798/timestamps')
     db = client.timestamps
@@ -109,7 +109,7 @@ def mongo_quick_search(request, searchKey):
     return response
 
 
-@login_required(login_url='/loginForm/')
+@login_required()
 # def mongo_js(request, searchKey):
 def mongo_js(request ):
     client = pymongo.MongoClient('mongodb://hora:hora@ds111798.mlab.com:11798/timestamps')
@@ -123,11 +123,11 @@ def mongo_js(request ):
     # json.loads](str( page.fetch()  ))
     # cursor  = db.items.find( { 'price': { '$gt': 5000, '$lt': 5500 } }).skip(0).limit(25)
 
-@login_required(login_url='/loginForm/')
+@login_required()
 def send_retrieve_favorite(request):
    return render(request, 'send_retrieve_favorite.html', { 'user' : 'alex'} )
 
-# @login_required(login_url='/loginForm/')
+# @login_required()
 # def json_favorites_post(request, id_prod):
 #     #alx = User.objects.all()[0]
 #     f = Favo.objects.get(user = request.user)
@@ -139,7 +139,7 @@ def send_retrieve_favorite(request):
     # # return JsonResponse(f.json_favorite_ids, safe=False)
     # return JsonResponse({"id_prod": id_prod }, safe=False)
 
-# @login_required(login_url='/loginForm/')
+# @login_required()
 # def json_favorites(request):
 #     # alx = User.objects.all()[0]
 #     #f = Favorite.objects.get(user = alx)
@@ -151,16 +151,16 @@ def list_cars_json(request):  # static html file with javascript
     car_list = list(autos)
     return JsonResponse(car_list, safe=False)
 
-@login_required(login_url='/loginForm/')
+@login_required()
 def find_files(request):
    return render(request, 'find_files.html')
 
 
-@login_required(login_url='/loginForm/')
+@login_required()
 def mongodb(request):
    return render(request, 'mongodb.html')
 
-@login_required(login_url='/loginForm/')
+@login_required()
 def response_json_search_files(request, searchKey):
     command = 'find /home/kambo/mysite -name *' + searchKey + '*.*'
     out = os.popen(command).readlines()
@@ -172,7 +172,7 @@ def response_json_search_files(request, searchKey):
     #         send.append(ln)
     return JsonResponse(out, safe=False)
 
-@login_required(login_url='/loginForm/')
+@login_required()
 def response_json_grep(request, grepKey):
     command =  'grep -rn \'/home/kambo/mysite\' -e \''+ grepKey+'\''
     out = os.popen(command).readlines()
@@ -182,25 +182,24 @@ def response_json_grep(request, grepKey):
             send.append(ln)
     return JsonResponse(send, safe=False)
 
-@login_required(login_url='/loginForm/')
+@login_required()
 def searchAngularJS(request):  # static html file with javascript
    return render(request, 'searchAngularJS.html')
 
 
-@login_required(login_url='/loginForm/')
+@login_required()
 def url_index(request):  # static html file with javascript
    return render(request, 'url_index.html')
 
-@login_required(login_url='/loginForm/')
+@login_required()
 def search_REST_API(request):  # static html file with javascript
    return render_to_response('search_REST_API.html')
 
-# @login_required(login_url='/loginForm/')
-
+@login_required()
 def version(request):  # static html file with javascript
    return render(request, 'version.html', {'user': request.user, 'request': request.method} )
 
-@login_required(login_url='/loginForm/')
+@login_required()
 def popover(request):  # static html file with javascript
    return render_to_response('popover.html')
 
@@ -210,15 +209,15 @@ def loginForm(request):  # static html file with javascript
 # **************************************************************
 
 # import json
-@login_required(login_url='/loginForm/')
+@login_required()
 def render_json_rep_template(request):
     return render(request, 'render_json_rep_template.html')
 
-@login_required(login_url='/loginForm/')
+@login_required()
 def geolocalization_template(request):
     return render(request, 'geolocalization_template.html')
 
-@login_required(login_url='/loginForm/')
+@login_required()
 def response_json_rep(request):
     car = Car.objects.filter(brand="Renault")
     json_obj = car[0].json_rep
@@ -228,7 +227,7 @@ from django.db.models import Q
 from django.core.paginator import Paginator #, EmptyPage, PageNotAnInteger
 
 
-@login_required(login_url='/loginForm/')
+@login_required()
 def simpleSearch(request):
 
     req_param = ''
@@ -248,12 +247,12 @@ def simpleSearch(request):
     return render(request,"simpleSearch.html",{'req': request, 'host': request.get_host(), 'params': request.content_params, 'setCars': setCars , 'pagina': page, 'req_param':req_param } )
 
 
-@login_required(login_url='/loginForm/')
+@login_required()
 def form(request):  # static html file with javascript
    return render(request, 'form.html', {})
 
 
-@login_required(login_url='/loginForm/')
+@login_required()
 def message(request):  # static html file with javascript
    return render_to_response('message.html')
 

@@ -159,24 +159,11 @@ MEDIA_URL = '/media/'
 # STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # STATIC_URL = '/static/'
 
-
 # TEMPLATE_CONTEXT_PROCESSORS = (
 #   'django.core.context_processors.request',
 # )
 
-# print('STATIC_ROOT', STATIC_ROOT)
-# print('STATIC_URL', STATIC_URL) 
-print('MEDIA_ROOT', MEDIA_ROOT)
-
-
-# STATIC_ROOT = u'/static'
-
 STATIC_URL = '/static/'
-
-
-print('BASE_DIR', BASE_DIR)
-# print('STATIC_ROOT', STATIC_ROOT)
-
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
@@ -184,4 +171,9 @@ STATICFILES_DIRS = [
     '/static/',
 ]
 
-print('STATICFILES_DIRS', STATICFILES_DIRS)
+
+# LOGIN_URL = '/admin/'
+LOGIN_URL = '/api-auth/login/'
+
+# LOGIN_REDIRECT_URL = '/find_files/'
+
