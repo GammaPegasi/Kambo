@@ -22,7 +22,7 @@ SECRET_KEY = '%=lb=p43-yob=uj4nv@ml25&2g=v0ut^=zarsx#vo$h=39=s)#'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [u'kambo.pythonanywhere.com', '127.0.0.1']
+ALLOWED_HOSTS = [u'kambo.pythonanywhere.com', '127.0.0.1', 'testserver']
 
 
 import sys

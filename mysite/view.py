@@ -195,7 +195,8 @@ def url_index(request):  # static html file with javascript
 def search_REST_API(request):  # static html file with javascript
    return render_to_response('search_REST_API.html')
 
-@login_required(login_url='/loginForm/')
+# @login_required(login_url='/loginForm/')
+
 def version(request):  # static html file with javascript
    return render(request, 'version.html', {'user': request.user, 'request': request.method} )
 
