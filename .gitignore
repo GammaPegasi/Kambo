@@ -1,7 +1,6 @@
-# db.sqlite*
-# db.sqlite3
 *.pyc
 mysite/**/*.pyc
 *.pub
 *.sublime-workspace
-
+*.sqlite3.2
+ *.[md]
