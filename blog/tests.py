@@ -21,6 +21,7 @@ class FavoriteTestCase2(TestCase):
        # f2.save()
      
     def test_log_in(self):
+        print("test_log_in")
         """User created and logged in !!! """
         c = Client()
         response = c.post('/loginForm/', {'username': 'johnny', 'password': 'secret'})
@@ -31,6 +32,7 @@ class FavoriteTestCase2(TestCase):
   
     def test_versions(self):
         """ Test versions """
+        print("\ntest_versions")
         c = Client()
         
         # response = c.post('/loginForm/', {'username': self.user.username, 'password': 'JOHNNY_123johnny'})

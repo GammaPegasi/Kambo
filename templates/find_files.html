@@ -52,12 +52,16 @@ app.controller('MainCtrl', function($scope,$http ) {
 
     $scope.get_editable_path =  function (url) {
         return "https://www.pythonanywhere.com/user/kambo/files" + url + "?edit";
+        // return "" + url + "?edit";
+
+
     }
 
   $scope.submit = function () {
     console.log("submit ");
     $scope.showLoader = true;
-    $http.get("https://kambo.pythonanywhere.com/response_json_search_files/" + $scope.searchKey)
+    // $http.get("https://kambo.pythonanywhere.com/response_json_search_files/" + $scope.searchKey)
+    $http.get("/response_json_search_files/" + $scope.searchKey)
 
         .then(function(response) {
             $scope.data = response;

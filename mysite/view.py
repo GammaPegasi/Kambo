@@ -15,6 +15,8 @@ from django.http import HttpResponseRedirect
 from .forms import NameForm, ContactForm, ValidForm
 from bson.json_util import dumps
 import logging
+
+
 # logging.basicConfig(filename='example.log',level=logging.DEBUG)
 # logging.debug('This message should go to the log file')
 # logging.info('So should this')
@@ -162,14 +164,14 @@ def mongodb(request):
 
 @login_required()
 def response_json_search_files(request, searchKey):
-    command = 'find /home/kambo/mysite -name *' + searchKey + '*.*'
+
+    if os.name == 'posix':
+       command = 'find /home/kambo/mysite -name *' + searchKey + '*.*'
+    else:
+       command = 'dir /B /S ' + searchKey + '*.*'
+
     out = os.popen(command).readlines()
-    # command =  'grep -rnw \'/home/kambo/mysite\' -e \'import\''
-    # out = os.popen(command).readlines()
-    # send = []
-    # for ln in out:
-    #     if (len(ln) < 100):
-    #         send.append(ln)
+    
     return JsonResponse(out, safe=False)
 
 @login_required()
