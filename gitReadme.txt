@@ -15,7 +15,19 @@ pymongo
 
 
 *************************************
-https://stackoverflow.com/questions/2514270/how-to-check-for-changes-on-remote-origin-git-repository
+
+git status 
+git add -A
+git commit -m"new update!
+git push -u origin master
+
+
+*************************************
+
+
+
+https://stackoverflow.com/questions/2514270/
+how-to-check-for-changes-on-remote-origin-git-repository
 
 You could git fetch origin to update the remote branch in your repository to point to the latest version. For a diff against the remote:
 git diff origin/master
