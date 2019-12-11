@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Login</title>
+<title>Login__</title>
 
 <!--<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">-->
 
@@ -21,42 +21,39 @@
 </head>
 
 <link href="/static/css/validForm.css" rel="stylesheet">
+<body style="padding: 20px;">
 
+<!--<form action="https://kambo.pythonanywhere.com/get_name/" method="POST">-->
+<form method="post">{% csrf_token %}
 
+ {{form }} {{val }}
 
-<body>
+ <input type="submit" value="Submit">
+</form>
 
-<div class="container">
-  <div class="content-container">
+<hr>
+<div id='csrf'>*</div>
 
-    <form action="/get_name/" method="post">
-        {% csrf_token %}
-
-
-        <!--{{ form.as_p }}-->
-        <div class="fieldWrapper">
-            {{ form.username.errors }}
-            {{ form.username.label_tag }}
-            {{ form.username }}
-        </div>
-
-        <div class="fieldWrapper">
-            {{ form.password.errors }}
-            {{ form.password.label_tag }}
-            {{ form.password }}
-        </div>
-
-        <button class="login"> Login</button>
-        <button class="media fb" name='facebook'><i class="fa fa-facebook" aria-hidden="true"></i></button>
-        <button class="media g" name='google' ><i class="fa fa-google" aria-hidden="true"></i></button>
-    </form>
-
-
-  </div>
-
-</div>
-
-
+<script>
+    function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+var csrftoken = getCookie('csrftoken');
+console.log('csrftoken',  csrftoken)
+document.getElementById('csrf').textContent = csrftoken
+</script>
 
 </body>
 

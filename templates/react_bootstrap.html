@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
+  <title>Babel</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body style='margin:20px;'>
+
+  <div id="container">
+    <!-- This element's contents will be replaced with your component. -->
+
+</div>
+
+
+<script src='https://unpkg.com/react/umd/react.development.js'></script>
+<script src='https://unpkg.com/react-dom/umd/react-dom.development.js'></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<script type="text/babel">
+
+
+function ShowLogInfo(props){
+
+    const style = {}
+    style.padding = '5px';
+    // (props.authenticated == true) ? style.border = 'solid 2px blue' : style.border = 'solid 2px red';
+
+
+    const jumbo =  <div class="jumbotron">
+             { props.authenticated == true?  <h6 class="display-4">Hello, {props.user}!</h6> : <p class="lead">You are not logged in</p> }
+            <pre style={style}>{ JSON.stringify(props.info, null, 3) } </pre>
+            </div> ;
+
+
+    return <div> {jumbo } </div>;
+}
+
+class EssayForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      username : '',
+      password: '',
+      loginInfo: '{{request.user}}',
+      authenticated: false
+    };
+
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handelInputChange = this.handelInputChange.bind(this);
+    this.authorize = this.authorize.bind(this);
+  }
+
+
+  handleSubmit(event) {
+    // console.log(event.target);
+    console.log(JSON.stringify(this.state, null, 3 ));
+    event.preventDefault();
+    this.authorize(this.state.username, this.state.password)
+  }
+
+  handelInputChange(event){
+    const target = event.target;
+    const value = event.type === 'checkbox' ? target.checked : target.value;
+    const name = event.target.name
+    this.setState({
+      [name]: value
+    });
+  }
+
+  componentDidMount(){
+    this.authorize(this.state.username, this.state.password)
+  }
+
+  authorize = (username, password) => {
+        const url = "/authorize_json_babel/";
+        var formData = new FormData();
+
+        formData.append('username', username);
+        formData.append('password', password);
+
+        fetch(url, {
+            method: 'POST',
+            body: formData, // data can be `string` or {object}!
+            // headers:{'Content-Type': 'application/json' }
+
+        })
+        .then(response => {
+            console.log('Authorize:response: ', response, '***')
+            return response;
+        })
+      	.then(response => response.json())
+      	.then(json => {
+
+      	    console.log('JSON: ', json)
+      	    this.setState({ loginInfo : json, authenticated: json.authenticated, username : json.username })
+
+      	})
+
+    }
+
+  render() {
+    return (
+     <div>
+       <ShowLogInfo info={this.state.loginInfo} authenticated={this.state.authenticated} user={this.state.username }/>
+
+        <h5>  { this.state.authenticated == true ?  <a href='/logout_/'> logout </a> : 'Login ' } </h5>
+
+     <form onSubmit={this.handleSubmit}>
+
+        <div class="input-group flex-nowrap">
+            <div class="input-group-prepend">
+            <span class="input-group-text" id="addon-wrapping">@</span>
+            </div>
+            <input type="text" class="form-control" value={this.state.username}  onChange={this.handelInputChange} name='username' />
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" class="form-control" value={this.state.password} name="password" placeholder="Password" onChange={this.handelInputChange} />
+        </div>
+
+        <button class="btn btn-primary" type="submit">Button</button>
+
+     </form>
+
+    </div>
+    );
+  }
+}
+
+
+ReactDOM.render(
+  <EssayForm/>
+  , document.getElementById('container')
+);
+</script>
+
+
+
+</body>
+</html>

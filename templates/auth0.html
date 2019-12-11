@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Auth01
+  </title>
+   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<script src="https://cdn.auth0.com/js/auth0/9.10/auth0.min.js"></script>
+</head>
+
+<body>
+
+<div class="content" style="border: solid 1px red;">
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">Auth0 - JavaScript</a>
+        <p>
+
+        <button id="btn-home-view" class="btn btn-primary btn-margin">
+            Home
+        </button>
+
+        <button id="btn-login" class="btn btn-primary btn-margin">
+            Log In
+        </button>
+
+        <button id="btn-logout" class="btn btn-primary btn-margin">
+            Log Out
+        </button>
+
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+
+    <h4>_# This is Home_ </h4>
+      <button id="btnId" onclick="retrieve()"> ReqAPI prods </button>
+  </main>
+
+</div>
+
+<pre>
+<div id="display_credentials" style="border: solid 1px green"> </div>
+<div id="display" style="border: solid 1px green"> </div>
+</pre>
+
+</body>
+
+{% load static %}
+<script src="{% static "js/authorization.js" %}"></script>
+
+<script>
+
+const retrieve = () => {
+    const url = "/product/";
+
+    var formData = new FormData();
+
+    fetch(url, {
+        method: 'GET',
+        headers:{'Content-Type': 'application/json', 'Authorization' : 'Basic anVhbjpqdWFuMTIzNA==' }
+
+    })
+    .then(response => {
+        console.log('Retrieve > ', response)
+
+        return response;
+    })
+  	.then(response => response.json())
+  	.then(json => {
+  	    console.log('JSON (auth header always included): ', json)
+        foo = document.getElementById("display")
+        foo.innerText = JSON.stringify(json.results, null, 2)
+  	}
+    )
+}
+
+</script>
+
+<style>
+.disp{
+    display: block;
+    width: 133px;
+    height: 30px;
+    margin: 10px;
+    background: antiquewhite;
+    border: dotted green 1px;
+    border-radius: 25px;
+    padding-left: 15px;
+}
+</style>
+
+</html>

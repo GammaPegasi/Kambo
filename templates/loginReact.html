@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>LoginReact  </title>
+</head>
+
+msg <pre id='msg' style='border : red solid 1px'> </pre>
+json <pre id='values' style='border : green solid 1px'> </pre>
+<body>
+<script >
+
+
+function start(){
+    const url = '../product/'
+    fetch(url, {
+        method: 'GET',
+    })
+    .then(response => {
+          if(response.ok){
+              console.log('Response::', response)
+          }
+         else{
+              console.log('response.status', response.status )
+          }
+
+         document.getElementById('msg').textContent = response.status;
+         return response
+
+     })
+  	.then(response => response.json())
+  	.then(json => {
+  	    console.log('JSON: ', json);
+  	    document.getElementById('values').textContent = JSON.stringify(json, null, 3);
+  	})
+  	.catch(error => console.error('Error:', error))
+};
+
+
+
+start();
+</script>
+
+</body>
+</html>

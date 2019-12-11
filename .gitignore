@@ -2,6 +2,6 @@
 mysite/**/*.pyc
 *.pub
 *.sublime-workspace
-*.sqlite3.2
- *.md
+*.sqlite*
+*.md
 

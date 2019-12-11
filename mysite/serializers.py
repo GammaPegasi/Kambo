@@ -1,11 +1,7 @@
 from django.contrib.auth.models import User, Group
-from blog.models import Car, ProdJSON, Favorite
+from blog.models import Car, ProdJSON, Favorite, Product
 
 from rest_framework import serializers
-
-
-
-
 
 # class UserSerializer(serializers.HyperlinkedModelSerializer):
 class UserSerializer(serializers.HyperlinkedModelSerializer):
@@ -35,3 +31,10 @@ class FavoriteSerializer(serializers.ModelSerializer):
         model = Favorite
         fields = ('id', 'username', 'id_prod')
         read_only_fields = ['id',]
+
+
+class ProductSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Product
+        fields = ('name', 'description', 'photo')
+

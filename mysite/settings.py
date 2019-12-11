@@ -58,7 +58,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'rest_framework.authtoken',
     'blog',
+    # 'pipeline',
+    # 'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -69,6 +72,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    # 'corsheaders.middleware.CorsMiddleware',
+    # 'django.middleware.common.BrokenLinkEmailsMiddleware',
 ]
 
 # ROOT_URLCONF = 'mysite.urls'
@@ -100,7 +106,7 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3.2'),
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3.3'),
     }
 }
 
@@ -149,7 +155,7 @@ STATIC_URL = '/static/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-MEDIA_URL = '/media/' 
+MEDIA_URL = '/media/'
 
 
 # STATIC_ROOT = u'/home/kambo/mysite/static'

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DreamF</title>
+</head>
+<body>
+
+<div id='result' style='border: solid red 1px;'>   </div>
+<button onClick='authorize()'> Authorize </button>
+
+</div>
+
+<script>
+
+
+let token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJlOGRmYzUxMjkzMTQ5ODA4ZWNhOTIwZDc2NWJkNmQ1OSIsImlzcyI6Imh0dHA6Ly81Mi4xNjguOS4yMzEvYXBpL3YyL3N5c3RlbS9hZG1pbi9zZXNzaW9uIiwiaWF0IjoxNTYxNjA0MzAwLCJleHAiOjE1NjE2MDc5MDAsIm5iZiI6MTU2MTYwNDMwMCwianRpIjoiYnFjVG51ckJiM09ZTU9tOSIsInVzZXJfaWQiOjEsImZvcmV2ZXIiOmZhbHNlfQ.osqeCjvP52aRvCBRpsA0gUEsVe9HWeyb1EKZDRtoZAs"
+let fo = (id) => {
+    const url = "https://52.168.9.231/api/v2/sql9296816/_table/product/" + id;
+    fetch(url, { method: 'GET',
+        headers:{ "accept": "application/json", 
+        "X-DreamFactory-API-Key": "36fda24fe5588fa4285ac6c6c2fdfbdb6b6bc9834699774c9bf777f706d05a88",
+        "X-DreamFactory-Session-Token" : token
+      }
+    })
+    .then(response => {
+        console.log('Authorize:response: ', response, '***')
+        return response;
+    })
+  	.then(response => response.json())
+  	.then(json => console.log('JSON: ', json) )
+}
+fo(2);
+
+
+</script>
+</body>
+</html>

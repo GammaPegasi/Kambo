@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>realStateMaps</title>
+    <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+    <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.0/mapsjs-ui.css?dp-version=1542186754" />
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.0/mapsjs-core.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.0/mapsjs-service.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.0/mapsjs-ui.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.0/mapsjs-mapevents.js"></script>
+
+    {% load static %}
+    <script src="{% static "js/realStateMapsPoints.js" %}"></script>
+    <script src="{% static "js/realStateMapsFunc.js" %}"></script>
+    <link rel="stylesheet" href="{% static "css/realStateMaps.css" %}">
+
+
+</head>
+
+<body>
+
+<div id="map" style="width: 100%; height: 700px; background: grey; border: solid red 1px "></div>
+
+
+<script  type="text/javascript" charset="UTF-8" >
+
+points = maldonado.concat(maldonado, rocha)
+points = points.concat(points, colonia)
+points = points.concat(points, uruguay)
+
+
+extMald = m1.concat(m1, m2).concat(m1, m3)
+
+points = points.concat(points, extMald)
+
+
+
+// points = rocha.concat(maldonado)
+
+const center = {
+  'lat' : -34.893407,
+  'lng' : -55.24679
+};
+
+/**
+ * Creates a new marker and adds it to a group
+ * @param {H.map.Group} group       The group holding the new marker
+ * @param {H.geo.Point} coordinate  The location of the marker
+ * @param {String} html             Data associated with the marker
+ */
+function addMarkerToGroup(group, coordinate, html) {
+  var marker = new H.map.Marker(coordinate);
+  // add custom data to the marker
+  marker.setData(html);
+  group.addObject(marker);
+}
+
+
+function addSVGMarkers(map){
+  var svgMarkup = '<svg style="left:-14px;top:-36px;"' +
+      'xmlns="http://www.w3.org/2000/svg" width="28px" height="36px" >' +
+      '<path d="M 19 31 C 19 32.7 16.3 34 13 34 C 9.7 34 7 32.7 7 31 C 7 29.3 9.7 ' +
+      '28 13 28 C 16.3 28 19 29.3 19 31 Z" fill="#000" fill-opacity=".2"></path>' +
+      '<path d="M 13 0 C 9.5 0 6.3 1.3 3.8 3.8 C 1.4 7.8 0 9.4 0 12.8 C 0 16.3 1.4 ' +
+      '19.5 3.8 21.9 L 13 31 L 22.2 21.9 C 24.6 19.5 25.9 16.3 25.9 12.8 C 25.9 9.4 24.6 ' +
+      '6.1 22.1 3.8 C 19.7 1.3 16.5 0 13 0 Z" fill="#fff"></path>' +
+      '<path d="M 13 2.2 C 6 2.2 2.3 7.2 2.1 12.8 C 2.1 16.1 3.1 18.4 5.2 20.5 L ' +
+      '13 28.2 L 20.8 20.5 C 22.9 18.4 23.8 16.2 23.8 12.8 C 23.6 7.07 20 2.2 ' +
+      '13 2.2 Z" fill="${COLOR}"></path>' +
+      '<text transform="matrix( 1 0 0 1 13 18 )" x="0" y="0" fill-opacity="1" ' +
+      'fill="#fff" text-anchor="middle" ' +
+      'font-weight="bold" font-size="13px" font-family="arial">${TEXT}</text></svg>'
+
+  // Add the first marker
+  var parisIcon = new H.map.Icon(
+    svgMarkup.replace('${COLOR}', 'blue').replace('${TEXT}', 'P')),
+    parisMarker = new H.map.Marker({lat: 55.5607, lng: 12.9811 },
+      {icon: parisIcon});
+
+  map.addObject(parisMarker);
+}
+
+
+var GLOBAL_GROUP;
+
+
+
+/**
+ * Add two markers showing the position of Liverpool and Manchester City football clubs.
+ * Clicking on a marker opens an infobubble which holds HTML content related to the marker.
+ * @param  {H.Map} map      A HERE Map instance within the application
+ */
+function addInfoBubble(map) {
+  var group = new H.map.Group();
+
+  map.addObject(group);
+
+  // add 'tap' event listener, that opens info bubble, to the group
+  group.addEventListener('tap', function (evt) {
+    // event target is the marker itself, group is a parent event target
+    // for all objects that it contains
+    var bubble =  new H.ui.InfoBubble(evt.target.getPosition(), {
+      // read custom data
+      content: evt.target.getData()
+    });
+    // show info bubble
+    ui.addBubble(bubble);
+  }, false);
+
+
+
+  points.forEach( (e) => {
+    //   console.log('points: ', {lat: e.lat, lng: e.lon} )
+      e.googleMapUrl= `https://www.google.co.uk/maps/place/${e.lat},${e.lon}`;
+      e.openStreetUrl= `https://www.openstreetmap.org/#map=15/${e.lat}/${e.lon}`;
+
+    // buffer = getSliderHTML(e);
+
+      addMarkerToGroup(group, {lat: e.lat, lng: e.lon} ,
+        `<span class='title'> ${e.title} </span> <span> USD ${e.price} </span>
+         <img width="200px " src=${e.images[0]}>  <div>
+              <a target="_blank" href=${e.url}> ML </a>
+            </div>
+            <div class='phones'> ${turnIntoWhatsAppNumber(e)} </div>
+            <div>
+              <a target="_blank" href=${e.openStreetUrl}> Open Street</a>
+            </div>
+             <div>
+              <a target="_blank" href=${e.googleMapUrl}> GoogleMaps</a>
+            </div>
+             <div> ${e.areaM2}
+            </div>
+             <div class='coordintates'> ${e.lat}, ${e.lon}  </div>
+            <div class='desc'> ${e.description.substring(0,70) }  </div>
+           `
+        );
+  });
+  // 'lat': -34.797632,
+  // 'lon': -55.38268,
+
+    GLOBAL_GROUP = group;
+}
+
+/**
+ * Boilerplate map initialization code starts below:
+ */
+
+// initialize communication with the platform
+var platform = new H.service.Platform({
+  app_id: 'devportal-demo-20180625',
+  app_code: '9v2BkviRwi9Ot26kp2IysQ',
+  useHTTPS: true
+});
+var pixelRatio = window.devicePixelRatio || 1;
+var defaultLayers = platform.createDefaultLayers({
+  tileSize: pixelRatio === 1 ? 256 : 512,
+  ppi: pixelRatio === 1 ? undefined : 320
+});
+
+// initialize a map - this map is centered over Europe
+var map = new H.Map(document.getElementById('map'),
+  defaultLayers.normal.map,{
+  center: center,
+  zoom: 9,
+  pixelRatio: pixelRatio
+});
+
+// MapEvents enables the event system
+// Behavior implements default interactions for pan/zoom (also on mobile touch environments)
+var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
+
+// create default UI with layers provided by the platform
+var ui = H.ui.UI.createDefault(map, defaultLayers);
+
+// Now use the map as required...
+addInfoBubble(map);
+</script>
+
+
+</body>
+</html>

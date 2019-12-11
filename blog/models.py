@@ -1,23 +1,8 @@
 # from django.template.defaultfilters import slugify
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils.html import format_html
 
-# Create your models here.
-
-# class Entry(models.Model):
-#     title = models.CharField(max_length=200)
-#     content = models.TextField()
-#     slug = models.SlugField(editable=False)
-
-#     def __unicode__(self):
-#         return self.title
-
-#     def save(self, *args, **kwargs):
-#         if not self.id:
-#             self.slug = slugify(self.title)
-#         super(Entry, self).save(*args, **kwargs)
-
-# new comment to show in github
 
 class Seller(models.Model):
         name =      models.CharField(max_length=20, blank=True)
@@ -38,14 +23,6 @@ class ProdJSON(models.Model):
         deleted_at =        models.DateTimeField(auto_now_add=True)
         active =            models.BooleanField(default=True)
         searchable_words =  models.TextField(blank=True)
-
-        # def fill_basic_info(key_array):
-        #     p = {}
-        #     for k in key_array:
-        #         p[k] = self.json_full_info[k]
-
-        #     self.json_basic_info = p
-
 
 class Car(models.Model):
         brand =         models.CharField(max_length=50)        #Subaru
@@ -68,9 +45,6 @@ class Car(models.Model):
 
         json_rep =  models.TextField(blank=True)
 
-        # def __unicode__(self):
-        #     return self.brand + " " + self.model + " $ " + self.price + " " + self.milleageKM + " KM"
-
         def __str__(self):
             return self.brand + " " + self.model + " $" + str(self.price) + "-" + str(self.milleageKM) + "KM"
 
@@ -81,4 +55,24 @@ class Favorite(models.Model):
 
         def __str__(self):
             return self.id_prod + ' ' + self.username
+
+class Product(models.Model):
+
+        # product_id = models.CharField(max_length=50)
+        name =        models.CharField(max_length=50)
+        description = models.CharField(max_length=50,blank=True)
+        # price =    models.PositiveIntegerField()
+        # discounted_price = models.PositiveIntegerField()
+        # display = models.BooleanField(default=True)
+        # image = models.URLField(blank=True)
+        photo = models.ImageField(upload_to='cars', default = 'foto.jpg')
+
+        # def show_photo(self):
+        #     return format_html('<img src={} style="height:100px;">', self.url)
+
+        # def __str__(self):
+        #     return self.name + " " + self.description + " $" + str(self.price) + "-" + str(self.image) + "KM"
+
+        def __str__(self):
+            return self.name + " " + self.description
 

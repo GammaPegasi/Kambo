@@ -6,20 +6,54 @@
 
 <body>
 
-<h2>Thanks! </h2>
+username {{ username }}
+<hr>
+<a href = "/get_name/"> Form </a>
+<hr>
+formFields {{ formFields }}
+<hr>
+formData {{ formData }}
+<hr>
+authenticated {{ authenticated }}
 <hr>
 
-<h3>
-<a href = "/get_name/"> Form </a>
-</h3>
+
+</div>
+
+<script >
+
+function start(){
+    let data = {};
+    csrfmiddlewaretoken =  '{{repr.csrfmiddlewaretoken}}';
+    fetch("https://kambo.pythonanywhere.com/response_json_rep" , {
+        method: 'GET',
+        // csrfmiddlewaretoken: '{{repr.csrfmiddlewaretoken}}'
+    })
 
 
-<pre>
-{{ formFields }}
-{{ repr }}
+    .then(response => {
+      if(response.ok){
+          console.log(' resp::', response)
+            return response;
+      }
+      else{
+        if (response.status === 404){
+          console.log( 'Not found ', response.status )
+          document.getElementById('value').textContent = '404 Not found'
+         }
+      }
+      })
+  	.then(response => response.json())
+  	.then(json => console.log('JSON: ', json) )
+//   	.then(response => {  console.log('R :', response)
 
-</pre>
 
+
+
+};
+start();
+
+</script>
 
 </body>
 

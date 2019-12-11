@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AuthorizeJson  </title>
+</head>
+
+<body>
+
+{% include "login_template.html" %}
+
+<a href="/logout_view/">Log out</a>
+
+<h3>Request: {{ request }} </h3>
+<h3>MSG: {{ msg }} </h3>
+
+<div id='result' style='border: solid red 1px;'>   </div>
+<button onClick='authorize()'> Authorize </button>
+
+<br>
+<div style='border: solid blue 1px;'>
+  name:<br>
+  <input type="text" name="name" value="Mickey">
+  <br>
+  password :<br>
+  <input type="text" name="password" value="Mouse">
+
+  <br><br>
+  <!--<input type="submit" value="Submit">-->
+  <button onclick="foo()"> Send </button>
+
+</div>
+
+
+<script>
+const foo = () => {
+    //   document.getElementById('value').textContent = '404 Not found'
+    let name = document.getElementsByTagName('input')['name'].value
+    let pass = document.getElementsByTagName('input')['password'].value
+    authorize(name, pass)
+    console.log(name, pass)
+
+}
+
+const authorize = (username='juan', password='juan1234') => {
+    const url = "/authorize_json/";
+    var formData = new FormData();
+
+    formData.append('username', username);
+    formData.append('password', password);
+
+    fetch(url, {
+        method: 'POST',
+        body: formData, // data can be `string` or {object}!
+        // headers:{'Content-Type': 'application/json' }
+
+    })
+    .then(response => {
+        console.log('Authorize:response: ', response, '***')
+        document.getElementById('result').textContent = response.statusText;
+        return response;
+    })
+  	.then(response => response.json())
+  	.then(json => console.log('JSON: ', json) )
+
+}
+
+</script>
+</body>
+</html>

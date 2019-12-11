@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		cross_header
+	</title>
+</head>
+<body>
+cross_header
+
+<div>
+    (index):1 Access to fetch at 'https://kambo.pythonanywhere.com/list_cars_json/' from origin 'http://mobalx.pythonanywhere.com' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. If an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled.
+</div>
+
+	<script type="text/javascript">
+
+url1 = 'https://jsonplaceholder.typicode.com/todos/1'
+url2 = "https://kambo.pythonanywhere.com/response_json_rep/"
+url3 = "https://kambo.pythonanywhere.com/list_cars_json/"
+
+arr =  []
+
+arr.push(url1)
+arr.push(url2)
+arr.push(url3)
+
+const foo = n =>{
+	fetch(arr[n], {mode: 'no-cors'})
+	  .then(response => {
+	        console.log('Authorize:response: ', response, '***')
+	        return response;
+	   })
+	   // .then(response => response.json())
+	   .then(response => response)
+	   .then(json => console.log('JSON: ', json) )
+}
+
+// foo(0)
+
+
+fetch(url1)
+  .then(response => {
+        console.log('Authorize:response: ', response, '***')
+        return response;
+   })
+	.then(response => response.json())
+	.then(json => console.log('ULR ', url1, 'JSON: ', json) )
+
+
+// fetch(urx, {mode: 'no-cors'})
+//   .then(response => {
+//         console.log('Authorize:response: ', response, '***')
+//         return response;
+//   })
+// 	.then(response => response.json())
+// 	.then(json => console.log('JSON: ', json) )
+
+urx = "https://kambo.pythonanywhere.com/list_cars_json/"
+fetch(urx, {mode: 'no-cors'})
+  .then(response => {
+        console.log('** NO-CORS **: ', response, '***')
+        return response;
+   })
+	.then(response => response.json())
+	.then(json => console.log('ULR ', urx, 'JSON: ', json) )
+	.catch( x => console.log('ERROR: ',x))
+
+urNode = "https://8080-dot-3387146-dot-devshell.appspot.com"
+fetch(urNode, {mode: 'no-cors'})
+  .then(response => {
+        console.log('** NO-CORS **: ', response, '***')
+        return response;
+   })
+	.then(response => response.json())
+	.then(json => console.log('ULR ', urx, 'JSON: ', json) )
+	.catch( x => console.log('ERROR: ',x))
+
+
+
+</script>
+
+</body>
+</html>

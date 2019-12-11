@@ -17,11 +17,13 @@
 </head>
 
 <body>
+{% include "header_template.html" %}
+
 <div ng-controller="MainCtrl">
 
 <div  id="noScroll" class="container">
 
-{% include "header_template.html" %}
+
 
   <div class="alert alert-info">
     <p>Sort Type: {{ sortType }}</p>
