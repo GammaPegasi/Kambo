@@ -26,7 +26,7 @@ from mysite.view import list_cars_json, search_REST_API, simpleSearch, message, 
 searchAngularJS, loginForm, render_json_rep_template, response_json_grep, geolocalization_template, url_index, find_files, \
 response_json_search_files, mongodb, mongo_js, view_mongo, mongo_quick_search, camera,newspaper, salvattore, get_name, thanks, logout_view, \
 validForm, submitedData, realStateMaps, img, simple_upload, login_with_fetch, loginReact, authorize_json, authorize_json_babel, logout_, react_bootstrap, \
-auth0, auth01, ExampleAuth, dream_factory, cross_header, qr_code, risto_menu
+auth0, auth01, ExampleAuth, dream_factory, cross_header, qr_code, risto_menu, jsmenu
 
 router = routers.DefaultRouter()
 router.register(r'users', view.UserViewSet)
@@ -42,11 +42,17 @@ LOGOUT_URL = 'logout'
 LOGIN_REDIRECT_URL = 'home'
 
 from rest_framework.authtoken import views
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
 
+    url(r'^change-password/', auth_views.PasswordChangeView.as_view()),
+
     url(r'^api-token-auth/', views.obtain_auth_token),
     url(r'^dream_factory/', dream_factory),
+
+    url(r'^jsmenu/', jsmenu),
+
     url(r'^ExampleAuth/', ExampleAuth.as_view()),
     # url(r'^oauth/', include('social_django.urls', namespace='social')),  # <--
     # url(r'^example_auth/', example_auth),
@@ -56,7 +62,6 @@ urlpatterns = [
 
     url(r'^auth0/', auth0),
     url(r'^auth01/', auth01),
-
 
     url(r'^react_bootstrap/', react_bootstrap),
     url(r'^logout_/', logout_),
@@ -106,8 +111,6 @@ urlpatterns = [
 
     url(r'^response_json_search_files/(?P<searchKey>[\w\d@\.\-\*\_]+)/$', response_json_search_files),
 
-
-
     # url(r'^polls/(?P<string>[\w\-]+)/$','polls.views.detail')
 
     url(r'^response_json_grep/', response_json_grep),
@@ -123,7 +126,6 @@ urlpatterns = [
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     # url(r'car_view', view.CarListView.as_view())
     # url('^car_view/(?P<brand>.+)/$', view.CarListView.as_view()),
-
 ]
 # Boostrap and AnjularJS
 # file:///C:/Users/hvillarrea/Desktop/DEV/Bootstrap/layoutit2/src/index.html

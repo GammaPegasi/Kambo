@@ -24,13 +24,14 @@
 <body style="padding: 20px;">
 
 <!--<form action="https://kambo.pythonanywhere.com/get_name/" method="POST">-->
-<form method="post">{% csrf_token %}
+<div class="container">
+<form method="post" style="margin: 20px;">{% csrf_token %}
 
  {{form }} {{val }}
 
  <input type="submit" value="Submit">
 </form>
-
+</div>
 <hr>
 <div id='csrf'>*</div>
 

@@ -36,6 +36,9 @@ def cross_header(request):  # static html file with javascript
 def qr_code(request):
    return render_to_response('qr_code.html')
 
+def jsmenu(request):
+   return render_to_response('jsmenu.html')
+
 # @login_required()
 # def uploadForm(request):
 
@@ -144,7 +147,7 @@ def authorize_json(request):
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
-        user = authenticate(username=username, password=password)
+        user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
             doc = {'username' : username,  'password' : password, 'status': 'LOGGED IN' }
