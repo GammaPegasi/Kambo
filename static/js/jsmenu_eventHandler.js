@@ -3,8 +3,8 @@ window.addEventListener('load', function() {
   var homeViewBtn = document.getElementById('btn-home-view');
   var display = document.getElementById('display');
 
+  const mainMenu = ()=> {
 
-  const foo = ()=> {
       var ul = document.querySelector('ul');
 
       (showMenu = ()=> {
@@ -15,10 +15,10 @@ window.addEventListener('load', function() {
               console.log(x.name, i);
 
               if ( i == 0){
-                tmp += `<li class="active">`
+                tmp += `<li class="active" id="pk${i}">`
               }
               else {
-                tmp += `<li>`
+                tmp += `<li id="pk${i}">`
               }
               tmp += `<a data-toggle="tab" href="#menu${i}"> ${x.name}</a> </li>`
          });
@@ -29,15 +29,15 @@ window.addEventListener('load', function() {
 
 
 
+
     (tabContent = () => {
 
       var divtab = document.querySelector('.divtab');
-        var str = `<div class="tab-content"  style="border: dotted 2px red; height: 150px;">`;
+        var str = `<div class="tab-content">`;
 
         data.forEach( (x, i) => {
             str += `
                   <div id="menu${i}" class="tab-pane fade">
-                      <h4>${x.name}</h4>
                       <div style="background-color: #f0f0f0;;">` + prodsDom(i) +  `</div>
                   </div> `
          });
@@ -49,17 +49,12 @@ window.addEventListener('load', function() {
     })();
 
 
-
 };
 
-    foo();
-
-    document.querySelector('ul li a').click();
-
-  console.log('START  >');
-
+    mainMenu();
+    document.querySelector('#pk1 a').click();
+    console.log('START  >');
 });
-
 
 prodsDom = (index) => {
     str = ``;
@@ -71,7 +66,7 @@ prodsDom = (index) => {
 
             spanUrl =``
 
-            str +=`<h5>${m.name}</h5>`
+            str +=`<p id="${m.name}" > <h5>${m.name}</h5> </p>`
             if (m.products != undefined) {
                 m.products.forEach((p, n) =>{
                     p.url == undefined? spanUrl =`@` : spanUrl = `<span class="purl"> <a href="${p.url}">go</a></span>`
@@ -86,20 +81,18 @@ prodsDom = (index) => {
 }
 
 
+submenu = (index) => {
+        return "";
+        str = "";
+        if(data[index].menu == undefined){
+            return "";
+        }
 
-prods = (index) => {
-    if (data[index].menu != undefined) {
-        data[index].menu.forEach( (m, i) => {
-            console.log(m.name)
-            if (m.products != undefined) {
-                m.products.forEach((p, n) =>{
-                    console.log(p.name, " $", p.price, p.url);
-                });
-            };
+        // str = `<ul class="nav nav-tabs submenu">`;
+        str = `<ul class="nav submenu">`;
+        data[index].menu.forEach( (p, i) => {
+            console.log(p);
+            str += `<li> <a href="#${p.name}"> ${p.name}</a> </li> `;
         });
+        return str + "</ul>";
     }
-}
-
-
-
-

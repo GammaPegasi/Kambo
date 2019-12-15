@@ -26,7 +26,7 @@ from mysite.view import list_cars_json, search_REST_API, simpleSearch, message, 
 searchAngularJS, loginForm, render_json_rep_template, response_json_grep, geolocalization_template, url_index, find_files, \
 response_json_search_files, mongodb, mongo_js, view_mongo, mongo_quick_search, camera,newspaper, salvattore, get_name, thanks, logout_view, \
 validForm, submitedData, realStateMaps, img, simple_upload, login_with_fetch, loginReact, authorize_json, authorize_json_babel, logout_, react_bootstrap, \
-auth0, auth01, ExampleAuth, dream_factory, cross_header, qr_code, risto_menu, jsmenu
+auth0, auth01, ExampleAuth, dream_factory, cross_header, qr_code, risto_menu, jsmenu, signup
 
 router = routers.DefaultRouter()
 router.register(r'users', view.UserViewSet)
@@ -45,6 +45,7 @@ from rest_framework.authtoken import views
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
+    url(r'^signup/', signup),
 
     url(r'^change-password/', auth_views.PasswordChangeView.as_view()),
 

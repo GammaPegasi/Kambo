@@ -1,6 +1,6 @@
 from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render_to_response
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from blog.models import ProdJSON, Car, Favorite, Product
 from django.contrib.auth.models import User, Group
 from rest_framework import viewsets
@@ -12,7 +12,7 @@ import os
 import pymongo
 import re
 from django.http import HttpResponseRedirect
-from .forms import NameForm, ContactForm, ValidForm
+from .forms import ContactForm, ValidForm, SignUpForm
 from bson.json_util import dumps
 import logging
 from django.core.files.storage import FileSystemStorage
@@ -28,6 +28,38 @@ from django.views.decorators.csrf import csrf_exempt
 # sys.path.insert(0,"/home/kambo/.local/lib/python2.7/site-packages/pymongo")
 
 from django.contrib.auth import authenticate, login, logout
+
+from django.contrib.auth.forms import UserCreationForm
+
+
+def signup_2(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
+            login(request, user)
+            return redirect('find_files')
+    else:
+        form = UserCreationForm()
+    return render(request, 'signup.html', {'form': form})
+
+
+def signup(request):
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
+            login(request, user)
+            return redirect('find_files')
+    else:
+        form = SignUpForm()
+    return render(request, 'signup.html', {'form': form})
 
 
 def cross_header(request):  # static html file with javascript
