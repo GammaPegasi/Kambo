@@ -32,6 +32,11 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
 
 
+def foo(request):
+    return HttpResponseRedirect('/foo/')
+
+
+
 def signup_2(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
