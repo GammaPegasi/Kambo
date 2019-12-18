@@ -24,8 +24,8 @@
 <script src='https://unpkg.com/react/umd/react.development.js'></script>
 <script src='https://unpkg.com/react-dom/umd/react-dom.development.js'></script>
 <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
-<script type="text/babel">
 
+<script type="text/babel">
 
 function ShowLogInfo(props){
 
@@ -33,15 +33,18 @@ function ShowLogInfo(props){
     style.padding = '5px';
     // (props.authenticated == true) ? style.border = 'solid 2px blue' : style.border = 'solid 2px red';
 
-
-    const jumbo =  <div class="jumbotron">
-             { props.authenticated == true?  <h6 class="display-4">Hello, {props.user}!</h6> : <p class="lead">You are not logged in</p> }
+    const jumbo =  <div className="jumbotron">
+             { props.authenticated == true?  <h6 className="display-4">Hello, {props.user}!</h6> : <p className="lead">You are not logged in</p> }
             <pre style={style}>{ JSON.stringify(props.info, null, 3) } </pre>
             </div> ;
 
-
-    return <div> {jumbo } </div>;
+    return <div> { jumbo } </div>;
 }
+
+const Foo = (props) => {
+     return <div> <pre> { JSON.stringify(props, null, 2) } </pre> </div>;
+} 
+
 
 class EssayForm extends React.Component {
   constructor(props) {
@@ -58,12 +61,11 @@ class EssayForm extends React.Component {
     this.authorize = this.authorize.bind(this);
   }
 
-
   handleSubmit(event) {
-    // console.log(event.target);
+    console.log(event.target);
     console.log(JSON.stringify(this.state, null, 3 ));
     event.preventDefault();
-    this.authorize(this.state.username, this.state.password)
+    // this.authorize(this.state.username, this.state.password)
   }
 
   handelInputChange(event){
@@ -76,11 +78,11 @@ class EssayForm extends React.Component {
   }
 
   componentDidMount(){
-    this.authorize(this.state.username, this.state.password)
+    // this.authorize(this.state.username, this.state.password)
   }
 
   authorize = (username, password) => {
-        const url = "/authorize_json_babel/";
+        const url = "https://www.pythonanywhere.com/authorize_json_babel/";
         var formData = new FormData();
 
         formData.append('username', username);
@@ -96,38 +98,41 @@ class EssayForm extends React.Component {
             console.log('Authorize:response: ', response, '***')
             return response;
         })
-      	.then(response => response.json())
-      	.then(json => {
+        .then(response => response.json())
+        .then(json => {
 
-      	    console.log('JSON: ', json)
-      	    this.setState({ loginInfo : json, authenticated: json.authenticated, username : json.username })
+            console.log('JSON: ', json)
+            this.setState({ loginInfo : json, authenticated: json.authenticated, username : json.username })
 
-      	})
+        })
 
     }
 
   render() {
     return (
      <div>
+
+       <Foo info="info" authenticated="{this.state.authenticated}" user="{this.state.username }"/>
+
        <ShowLogInfo info={this.state.loginInfo} authenticated={this.state.authenticated} user={this.state.username }/>
 
         <h5>  { this.state.authenticated == true ?  <a href='/logout_/'> logout </a> : 'Login ' } </h5>
 
      <form onSubmit={this.handleSubmit}>
 
-        <div class="input-group flex-nowrap">
-            <div class="input-group-prepend">
-            <span class="input-group-text" id="addon-wrapping">@</span>
+        <div className="input-group flex-nowrap">
+            <div className="input-group-prepend">
+            <span className="input-group-text" id="addon-wrapping">@</span>
             </div>
-            <input type="text" class="form-control" value={this.state.username}  onChange={this.handelInputChange} name='username' />
+            <input type="text" className="form-control" value={this.state.username}  onChange={this.handelInputChange} name='username' />
         </div>
 
-        <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" value={this.state.password} name="password" placeholder="Password" onChange={this.handelInputChange} />
+        <div className="form-group">
+            <label htmlFor="exampleInputPassword1">Password</label>
+            <input type="password" className="form-control" value={this.state.password} name="password" placeholder="Password" onChange={this.handelInputChange} />
         </div>
 
-        <button class="btn btn-primary" type="submit">Button</button>
+        <button className="btn btn-primary" type="submit">Button</button>
 
      </form>
 
@@ -136,11 +141,11 @@ class EssayForm extends React.Component {
   }
 }
 
-
 ReactDOM.render(
-  <EssayForm/>
-  , document.getElementById('container')
+  <EssayForm/>, document.getElementById('container')
 );
+
+
 </script>
 
 
